@@ -1,485 +1,1201 @@
 <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<html class="dark" lang="en"><head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Sway Focus — AI Focus Coach for Better Routines</title>
-<meta content="Sway is an AI-supported focus coach that helps you plan realistic focus sessions, adjust routines, and reduce phone distraction." name="description"/>
-<!-- Fonts & Icons -->
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<!-- Scripts -->
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<script id="tailwind-config">
-      tailwind.config = {
-        darkMode: "class",
-        theme: {
-          extend: {
-            "colors": {
-                    "surface": "#131314",
-                    "accent-violet": "#8B5CF6",
-                    "on-error-container": "#ffdad6",
-                    "inverse-on-surface": "#313031",
-                    "glass-border": "rgba(255, 255, 255, 0.08)",
-                    "on-primary-fixed": "#0b006b",
-                    "on-secondary-fixed-variant": "#454653",
-                    "on-tertiary-fixed-variant": "#643f00",
-                    "accent-slate": "#475569",
-                    "surface-container-lowest": "#0e0e0f",
-                    "surface-variant": "#353436",
-                    "tertiary-fixed-dim": "#ffb959",
-                    "surface-container-highest": "#353436",
-                    "on-background": "#e5e2e3",
-                    "tertiary": "#ffb959",
-                    "on-surface": "#e5e2e3",
-                    "primary-container": "#8283ff",
-                    "on-secondary-fixed": "#191b27",
-                    "outline": "#918f9f",
-                    "background": "#131314",
-                    "on-tertiary-fixed": "#2a1800",
-                    "on-secondary-container": "#b7b7c7",
-                    "error": "#ffb4ab",
-                    "on-tertiary-container": "#3d2400",
-                    "on-surface-variant": "#c7c4d6",
-                    "inverse-surface": "#e5e2e3",
-                    "tertiary-container": "#c6820c",
-                    "on-secondary": "#2e2f3c",
-                    "error-container": "#93000a",
-                    "text-primary": "#F8FAFC",
-                    "on-error": "#690005",
-                    "secondary-container": "#474856",
-                    "inverse-primary": "#4f4ec8",
-                    "bg-base": "#0A0A0B",
-                    "on-primary-fixed-variant": "#3633af",
-                    "surface-container": "#201f20",
-                    "secondary": "#c5c5d6",
-                    "primary-fixed": "#e2dfff",
-                    "on-tertiary": "#462b00",
-                    "secondary-fixed-dim": "#c5c5d6",
-                    "primary": "#c2c1ff",
-                    "tertiary-fixed": "#ffddb6",
-                    "surface-tint": "#c2c1ff",
-                    "secondary-fixed": "#e2e1f2",
-                    "surface-container-high": "#2a2a2b",
-                    "surface-container-low": "#1c1b1c",
-                    "on-primary": "#1c119a",
-                    "surface-bright": "#3a393a",
-                    "surface-dim": "#131314",
-                    "primary-fixed-dim": "#c2c1ff",
-                    "bg-surface": "#121214",
-                    "text-secondary": "#94A3B8",
-                    "outline-variant": "#464553",
-                    "on-primary-container": "#130094"
-            },
-            "borderRadius": {
-                    "DEFAULT": "0.25rem",
-                    "lg": "0.5rem",
-                    "xl": "0.75rem",
-                    "full": "9999px"
-            },
-            "spacing": {
-                    "gutter": "24px",
-                    "stack-md": "16px",
-                    "stack-sm": "8px",
-                    "margin-mobile": "20px",
-                    "margin-desktop": "80px",
-                    "stack-lg": "32px",
-                    "unit": "4px"
-            },
-            "fontFamily": {
-                    "body-lg": ["Inter"],
-                    "label-md": ["Inter"],
-                    "display-lg": ["Inter"],
-                    "headline-lg-mobile": ["Inter"],
-                    "headline-md": ["Inter"],
-                    "body-md": ["Inter"],
-                    "label-sm": ["Inter"],
-                    "headline-lg": ["Inter"]
-            },
-            "fontSize": {
-                    "body-lg": ["18px", {"lineHeight": "1.6", "letterSpacing": "0em", "fontWeight": "400"}],
-                    "label-md": ["14px", {"lineHeight": "1.4", "letterSpacing": "0.02em", "fontWeight": "500"}],
-                    "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.03em", "fontWeight": "600"}],
-                    "headline-lg-mobile": ["28px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600"}],
-                    "headline-md": ["24px", {"lineHeight": "1.3", "letterSpacing": "-0.01em", "fontWeight": "500"}],
-                    "body-md": ["16px", {"lineHeight": "1.5", "letterSpacing": "0em", "fontWeight": "400"}],
-                    "label-sm": ["12px", {"lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "600"}],
-                    "headline-lg": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600"}]
-            }
-          },
-        },
+  <title>Sway Focus — AI Focus Coach for Better Routines</title>
+  <meta
+    name="description"
+    content="Sway is an AI supported focus coach that helps you plan realistic focus sessions, adjust routines, and reduce phone distraction without pressure."
+  />
+
+  <meta property="og:title" content="Sway Focus — AI Focus Coach" />
+  <meta
+    property="og:description"
+    content="Plan realistic focus sessions, adjust your routines, and reduce phone distraction with a calmer AI focus coach."
+  />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://swayfocus.com" />
+  <meta name="theme-color" content="#020403" />
+
+  <style>
+    :root {
+      --bg: #020403;
+      --bg-soft: #050706;
+      --surface: #141a1b;
+      --surface-2: #171f20;
+      --surface-green: #09261f;
+      --border: rgba(22, 207, 160, 0.22);
+      --border-strong: rgba(22, 207, 160, 0.42);
+      --primary: #16cfa0;
+      --primary-dark: #0fa683;
+      --teal: #10afa4;
+      --mint: #7cf8cf;
+      --text: #f5f7f6;
+      --text-soft: #b8c0bc;
+      --text-muted: #717c78;
+      --danger-bg: rgba(255,255,255,0.04);
+      --radius-xl: 32px;
+      --radius-lg: 24px;
+      --radius-md: 18px;
+      --shadow-green: 0 0 70px rgba(22, 207, 160, 0.16);
+      --shadow-card: 0 24px 70px rgba(0, 0, 0, 0.42);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      min-height: 100vh;
+      background:
+        radial-gradient(circle at 20% 5%, rgba(22, 207, 160, 0.13), transparent 34%),
+        radial-gradient(circle at 85% 12%, rgba(16, 175, 164, 0.11), transparent 30%),
+        linear-gradient(180deg, #020403 0%, #030605 48%, #020403 100%);
+      color: var(--text);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.5;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+      background-size: 36px 36px;
+      mask-image: radial-gradient(circle at top, black, transparent 72%);
+      opacity: 0.25;
+      z-index: 0;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page {
+      position: relative;
+      z-index: 1;
+    }
+
+    .container {
+      width: min(1120px, calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(18px);
+      background: rgba(2, 4, 3, 0.72);
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .nav-inner {
+      height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 750;
+      letter-spacing: -0.03em;
+      font-size: 22px;
+    }
+
+    .brand-mark {
+      width: 38px;
+      height: 38px;
+      display: grid;
+      place-items: center;
+      border-radius: 14px;
+      background:
+        radial-gradient(circle at 35% 20%, rgba(124, 248, 207, 0.95), transparent 30%),
+        linear-gradient(135deg, var(--primary), var(--teal));
+      box-shadow: 0 0 34px rgba(22, 207, 160, 0.34);
+      color: #02110d;
+      font-weight: 900;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      color: var(--text-soft);
+      font-size: 14px;
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
+    }
+
+    .nav-cta {
+      padding: 11px 18px;
+      border-radius: 999px;
+      background: rgba(22, 207, 160, 0.11);
+      border: 1px solid var(--border);
+      color: var(--mint);
+      font-weight: 650;
+    }
+
+    .hero {
+      padding: 86px 0 84px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.04fr 0.96fr;
+      gap: 64px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      width: fit-content;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 9px 14px;
+      border-radius: 999px;
+      background: rgba(22, 207, 160, 0.09);
+      border: 1px solid var(--border);
+      color: var(--mint);
+      font-weight: 650;
+      font-size: 14px;
+      margin-bottom: 24px;
+    }
+
+    .pulse {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: var(--primary);
+      box-shadow: 0 0 0 7px rgba(22, 207, 160, 0.14);
+    }
+
+    h1 {
+      max-width: 720px;
+      font-size: clamp(52px, 7vw, 92px);
+      line-height: 0.94;
+      letter-spacing: -0.075em;
+      font-weight: 830;
+      margin-bottom: 28px;
+    }
+
+    .hero-gradient {
+      background: linear-gradient(135deg, #ffffff 10%, #dffcf4 45%, #53e9be 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .hero-copy {
+      max-width: 620px;
+      color: var(--text-soft);
+      font-size: clamp(18px, 2vw, 22px);
+      letter-spacing: -0.025em;
+      margin-bottom: 34px;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      align-items: center;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      height: 54px;
+      padding: 0 24px;
+      border-radius: 999px;
+      font-weight: 760;
+      letter-spacing: -0.02em;
+      border: 1px solid transparent;
+      cursor: pointer;
+      transition: transform .2s ease, border-color .2s ease, background .2s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary), var(--teal));
+      color: #02110d;
+      box-shadow: 0 18px 40px rgba(22, 207, 160, 0.23);
+    }
+
+    .btn-secondary {
+      background: rgba(255,255,255,0.045);
+      color: var(--text);
+      border-color: rgba(255,255,255,0.1);
+    }
+
+    .hero-note {
+      margin-top: 20px;
+      color: var(--text-muted);
+      font-size: 14px;
+    }
+
+    .phone-wrap {
+      position: relative;
+      display: grid;
+      place-items: center;
+    }
+
+    .phone-glow {
+      position: absolute;
+      width: 440px;
+      height: 440px;
+      border-radius: 50%;
+      background: rgba(22, 207, 160, 0.18);
+      filter: blur(72px);
+      z-index: 0;
+    }
+
+    .phone {
+      position: relative;
+      z-index: 1;
+      width: min(370px, 88vw);
+      min-height: 710px;
+      padding: 18px;
+      border-radius: 48px;
+      background:
+        linear-gradient(145deg, rgba(255,255,255,0.13), transparent 18%),
+        #070a09;
+      border: 1px solid rgba(255,255,255,0.14);
+      box-shadow:
+        var(--shadow-card),
+        0 0 0 9px rgba(255,255,255,0.025);
+    }
+
+    .phone-screen {
+      min-height: 674px;
+      border-radius: 36px;
+      padding: 24px;
+      background:
+        radial-gradient(circle at 50% 0%, rgba(22, 207, 160, 0.18), transparent 36%),
+        linear-gradient(180deg, #050807, #020403);
+      border: 1px solid rgba(22, 207, 160, 0.14);
+      overflow: hidden;
+    }
+
+    .phone-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 26px;
+      color: var(--text-soft);
+      font-size: 13px;
+      font-weight: 650;
+    }
+
+    .mini-pill {
+      padding: 7px 11px;
+      border-radius: 999px;
+      background: rgba(22, 207, 160, 0.11);
+      color: var(--mint);
+      border: 1px solid rgba(22, 207, 160, 0.2);
+      font-weight: 760;
+    }
+
+    .app-title {
+      font-size: 32px;
+      letter-spacing: -0.06em;
+      line-height: 1;
+      margin-bottom: 10px;
+    }
+
+    .app-subtitle {
+      color: var(--text-muted);
+      font-size: 15px;
+      margin-bottom: 22px;
+    }
+
+    .coach-card,
+    .plan-card,
+    .session-card,
+    .stat-card {
+      border-radius: 24px;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.055), rgba(255,255,255,0.02)),
+        var(--surface);
+      border: 1px solid var(--border);
+      box-shadow: 0 18px 50px rgba(0,0,0,0.34);
+    }
+
+    .coach-card {
+      padding: 18px;
+      margin-bottom: 16px;
+    }
+
+    .coach-row {
+      display: flex;
+      align-items: center;
+      gap: 13px;
+      margin-bottom: 12px;
+    }
+
+    .icon-bubble {
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      border-radius: 16px;
+      background: linear-gradient(135deg, rgba(22,207,160,0.26), rgba(16,175,164,0.1));
+      color: var(--mint);
+      border: 1px solid rgba(22,207,160,0.2);
+      font-weight: 900;
+    }
+
+    .coach-card h3 {
+      font-size: 17px;
+      letter-spacing: -0.035em;
+    }
+
+    .coach-card p {
+      color: var(--text-soft);
+      font-size: 14px;
+    }
+
+    .session-card {
+      min-height: 154px;
+      padding: 18px;
+      margin-bottom: 16px;
+      background:
+        linear-gradient(rgba(3, 20, 15, 0.45), rgba(2, 4, 3, 0.95)),
+        radial-gradient(circle at 80% 10%, rgba(124,248,207,0.18), transparent 34%),
+        var(--surface-green);
+    }
+
+    .session-meta {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 38px;
+    }
+
+    .time-chip {
+      padding: 7px 12px;
+      border-radius: 13px;
+      background: rgba(0,0,0,0.28);
+      color: var(--text);
+      font-weight: 750;
+      border: 1px solid rgba(255,255,255,0.07);
+    }
+
+    .session-card h3 {
+      font-size: 25px;
+      letter-spacing: -0.055em;
+      line-height: 1.05;
+      margin-bottom: 8px;
+    }
+
+    .session-card p {
+      color: var(--text-soft);
+      font-size: 14px;
+    }
+
+    .plan-card {
+      padding: 18px;
+      margin-bottom: 16px;
+    }
+
+    .plan-card h3 {
+      font-size: 18px;
+      letter-spacing: -0.04em;
+      margin-bottom: 16px;
+    }
+
+    .plan-item {
+      display: grid;
+      grid-template-columns: 26px 1fr auto;
+      gap: 10px;
+      align-items: center;
+      padding: 9px 0;
+      color: var(--text-soft);
+      font-size: 14px;
+    }
+
+    .check {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: rgba(22,207,160,0.18);
+      color: var(--primary);
+      font-size: 13px;
+    }
+
+    .plan-time {
+      color: var(--text-muted);
+    }
+
+    .stat-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .stat-card {
+      padding: 16px;
+    }
+
+    .stat-card strong {
+      display: block;
+      color: var(--primary);
+      font-size: 25px;
+      letter-spacing: -0.055em;
+      margin-bottom: 4px;
+    }
+
+    .stat-card span {
+      color: var(--text-muted);
+      font-size: 13px;
+    }
+
+    section {
+      padding: 76px 0;
+    }
+
+    .section-head {
+      max-width: 760px;
+      margin-bottom: 34px;
+    }
+
+    .section-kicker {
+      color: var(--primary);
+      font-weight: 780;
+      letter-spacing: -0.02em;
+      margin-bottom: 10px;
+    }
+
+    h2 {
+      font-size: clamp(36px, 5vw, 62px);
+      line-height: 1;
+      letter-spacing: -0.065em;
+      margin-bottom: 18px;
+    }
+
+    .section-copy {
+      color: var(--text-soft);
+      font-size: 18px;
+      max-width: 700px;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+
+    .card {
+      padding: 26px;
+      min-height: 230px;
+      border-radius: var(--radius-lg);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.055), rgba(255,255,255,0.018)),
+        var(--surface);
+      border: 1px solid rgba(255,255,255,0.07);
+      box-shadow: 0 18px 55px rgba(0,0,0,0.24);
+      transition: transform .24s ease, border-color .24s ease, background .24s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      border-color: var(--border-strong);
+      background:
+        linear-gradient(180deg, rgba(22,207,160,0.08), rgba(255,255,255,0.018)),
+        var(--surface-2);
+    }
+
+    .card-icon {
+      width: 46px;
+      height: 46px;
+      display: grid;
+      place-items: center;
+      border-radius: 17px;
+      margin-bottom: 20px;
+      background: rgba(22,207,160,0.12);
+      border: 1px solid var(--border);
+      color: var(--mint);
+      font-size: 22px;
+    }
+
+    .card h3 {
+      font-size: 22px;
+      letter-spacing: -0.045em;
+      margin-bottom: 10px;
+    }
+
+    .card p {
+      color: var(--text-soft);
+    }
+
+    .wide-panel {
+      border-radius: var(--radius-xl);
+      padding: 34px;
+      background:
+        radial-gradient(circle at 80% 10%, rgba(22,207,160,0.15), transparent 34%),
+        linear-gradient(180deg, rgba(255,255,255,0.055), rgba(255,255,255,0.018)),
+        var(--surface);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow-card);
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+      counter-reset: step;
+    }
+
+    .step {
+      position: relative;
+      padding: 26px;
+      border-radius: var(--radius-lg);
+      background: rgba(255,255,255,0.035);
+      border: 1px solid rgba(255,255,255,0.07);
+    }
+
+    .step::before {
+      counter-increment: step;
+      content: counter(step);
+      width: 36px;
+      height: 36px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      margin-bottom: 22px;
+      background: linear-gradient(135deg, var(--primary), var(--teal));
+      color: #02110d;
+      font-weight: 900;
+    }
+
+    .step h3 {
+      font-size: 21px;
+      letter-spacing: -0.04em;
+      margin-bottom: 8px;
+    }
+
+    .step p {
+      color: var(--text-soft);
+    }
+
+    .privacy {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 28px;
+      align-items: center;
+    }
+
+    .privacy-list {
+      display: grid;
+      gap: 14px;
+    }
+
+    .privacy-item {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      padding: 18px;
+      border-radius: 20px;
+      background: rgba(255,255,255,0.035);
+      border: 1px solid rgba(255,255,255,0.075);
+      color: var(--text-soft);
+    }
+
+    .privacy-item strong {
+      display: block;
+      color: var(--text);
+      margin-bottom: 3px;
+    }
+
+    .audience-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+
+    .audience {
+      min-height: 150px;
+      padding: 24px;
+      border-radius: 24px;
+      background: rgba(22,207,160,0.06);
+      border: 1px solid var(--border);
+    }
+
+    .audience span {
+      display: block;
+      font-size: 30px;
+      margin-bottom: 14px;
+    }
+
+    .audience h3 {
+      letter-spacing: -0.04em;
+      margin-bottom: 6px;
+    }
+
+    .audience p {
+      color: var(--text-soft);
+      font-size: 14px;
+    }
+
+    .cta {
+      padding-bottom: 100px;
+    }
+
+    .cta-panel {
+      position: relative;
+      overflow: hidden;
+      text-align: center;
+      padding: 64px 34px;
+      border-radius: 40px;
+      background:
+        radial-gradient(circle at 50% 0%, rgba(124,248,207,0.18), transparent 36%),
+        linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02)),
+        #07100d;
+      border: 1px solid var(--border-strong);
+      box-shadow: var(--shadow-green), var(--shadow-card);
+    }
+
+    .cta-panel h2 {
+      max-width: 760px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .cta-panel p {
+      max-width: 650px;
+      margin: 0 auto 28px;
+      color: var(--text-soft);
+      font-size: 18px;
+    }
+
+    .waitlist {
+      max-width: 520px;
+      margin: 0 auto;
+      display: flex;
+      gap: 12px;
+      padding: 8px;
+      border-radius: 999px;
+      background: rgba(0,0,0,0.26);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .waitlist input {
+      flex: 1;
+      min-width: 0;
+      background: transparent;
+      border: 0;
+      outline: 0;
+      color: var(--text);
+      padding: 0 14px;
+      font-size: 15px;
+    }
+
+    .waitlist input::placeholder {
+      color: var(--text-muted);
+    }
+
+    .success {
+      margin-top: 14px;
+      color: var(--mint);
+      font-weight: 650;
+      opacity: 0;
+      transform: translateY(6px);
+      transition: .2s ease;
+    }
+
+    .success.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    footer {
+      border-top: 1px solid rgba(255,255,255,0.07);
+      padding: 34px 0;
+      color: var(--text-muted);
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a:hover {
+      color: var(--text);
+    }
+
+    @media (max-width: 980px) {
+      .hero-grid,
+      .privacy {
+        grid-template-columns: 1fr;
       }
-    </script>
-<style>
-        body {
-            background-color: #0A0A0B;
-            color: #F8FAFC;
-            font-family: 'Inter', sans-serif;
-            overflow-x: hidden;
-        }
-        .glass-card {
-            background: rgba(18, 18, 20, 0.6);
-            backdrop-filter: blur(32px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-        }
-        .glass-card:hover {
-            border-color: rgba(139, 92, 246, 0.3);
-            transition: border-color 0.3s ease;
-        }
-        .primary-glow:hover {
-            box-shadow: 0 0 20px rgba(139, 92, 246, 0.4);
-        }
-        .ambient-glow {
-            position: absolute;
-            width: 400px;
-            height: 400px;
-            background: radial-gradient(circle, rgba(139, 92, 246, 0.1) 0%, rgba(139, 92, 246, 0) 70%);
-            z-index: -1;
-            pointer-events: none;
-        }
-        .material-symbols-outlined {
-            font-variation-settings: 'FILL' 0, 'wght' 200, 'GRAD' 0, 'opsz' 24;
-        }
-        .step-line::after {
-            content: '';
-            position: absolute;
-            top: 40px;
-            bottom: 0;
-            left: 20px;
-            width: 1px;
-            background: rgba(255, 255, 255, 0.1);
-        }
-    </style>
+
+      .phone-wrap {
+        margin-top: 18px;
+      }
+
+      .feature-grid,
+      .audience-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .cards,
+      .steps {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 680px) {
+      .container {
+        width: min(100% - 28px, 1120px);
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .hero {
+        padding: 54px 0 50px;
+      }
+
+      h1 {
+        font-size: 58px;
+      }
+
+      .hero-copy {
+        font-size: 18px;
+      }
+
+      .actions {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .btn {
+        width: 100%;
+      }
+
+      .feature-grid,
+      .audience-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .phone {
+        min-height: auto;
+      }
+
+      .phone-screen {
+        min-height: auto;
+      }
+
+      .waitlist {
+        border-radius: 24px;
+        flex-direction: column;
+        padding: 12px;
+      }
+
+      .waitlist input {
+        height: 46px;
+      }
+
+      .waitlist .btn {
+        height: 50px;
+      }
+
+      section {
+        padding: 56px 0;
+      }
+
+      .wide-panel,
+      .cta-panel {
+        padding: 28px;
+        border-radius: 28px;
+      }
+    }
+  </style>
 </head>
-<body class="bg-bg-base text-text-primary selection:bg-accent-violet/30">
-<!-- Ambient Accents -->
-<div class="ambient-glow top-[-100px] right-[-50px]"></div>
-<div class="ambient-glow bottom-[10%]" style="left: -100px; background: radial-gradient(circle, rgba(139, 92, 246, 0.05) 0%, rgba(139, 92, 246, 0) 70%);"></div>
-<!-- Navigation -->
-<header class="bg-surface/60 backdrop-blur-xl border-b border-glass-border docked full-width top-0 sticky shadow-sm z-50">
-<div class="max-w-[1200px] mx-auto px-margin-mobile md:px-margin-desktop flex justify-between items-center h-20 w-full">
-<div class="flex items-center gap-2">
-<div class="w-8 h-8 bg-gradient-to-tr from-accent-violet to-primary-container rounded-lg flex items-center justify-center">
-<span class="material-symbols-outlined text-white text-[20px]" style="font-variation-settings: 'FILL' 1;">waves</span>
-</div>
-<span class="font-headline-md text-headline-md font-bold text-text-primary tracking-tight">Sway</span>
-</div>
-<nav class="hidden md:flex items-center gap-10">
-<a class="font-body-md text-body-md text-text-secondary hover:text-accent-violet transition-colors duration-300" href="#how-it-works">How it works</a>
-<a class="font-body-md text-body-md text-text-secondary hover:text-accent-violet transition-colors duration-300" href="#features">Features</a>
-<a class="font-body-md text-body-md text-text-secondary hover:text-accent-violet transition-colors duration-300" href="#privacy">Privacy</a>
-</nav>
-<button class="bg-gradient-to-r from-[#7C7CF8] to-[#8B5CF6] px-6 py-2.5 rounded-full font-label-md text-label-md text-white primary-glow active:scale-95 transition-all">
-                Join Waitlist
-            </button>
-</div>
-</header>
-<main>
-<!-- Hero Section -->
-<section class="relative pt-16 md:pt-32 pb-24 max-w-[1200px] mx-auto px-margin-mobile md:px-margin-desktop">
-<div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-<div class="space-y-8 max-w-xl">
-<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent-violet/10 border border-accent-violet/20">
-<span class="w-1.5 h-1.5 rounded-full bg-accent-violet animate-pulse"></span>
-<span class="text-accent-violet font-label-sm text-label-sm uppercase tracking-widest">Waitlist Open</span>
-</div>
-<h1 class="font-display-lg text-[44px] md:text-display-lg leading-[1.1] text-text-primary">
-                        Focus with <br/><span class="text-accent-violet">less friction.</span>
-</h1>
-<p class="font-body-lg text-body-lg text-text-secondary">
-                        Sway is an AI-supported focus coach that helps you plan realistic focus sessions, adjust your routines, and reduce phone distraction without making productivity feel heavy.
-                    </p>
-<div class="flex flex-col sm:flex-row gap-4 pt-4">
-<button class="bg-gradient-to-r from-[#7C7CF8] to-[#8B5CF6] px-8 py-4 rounded-full font-label-md text-label-md text-white primary-glow active:scale-95 transition-all flex items-center justify-center gap-2">
-                            Join the waitlist <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
-</button>
-<button class="bg-white/5 border border-white/10 px-8 py-4 rounded-full font-label-md text-label-md text-text-primary hover:bg-white/10 transition-all text-center">
-                            See how it works
-                        </button>
-</div>
-</div>
-<div class="relative">
-<!-- iPhone Mockup Container -->
-<div class="relative mx-auto w-[280px] h-[580px] bg-[#000] rounded-[3rem] border-[8px] border-[#1A1A1E] shadow-2xl overflow-hidden ring-1 ring-white/10">
-<div class="absolute top-0 w-full h-6 bg-[#000] z-20 flex justify-center">
-<div class="w-24 h-5 bg-[#000] rounded-b-2xl"></div>
-</div>
-<!-- UI Elements Inside iPhone -->
-<div class="p-6 pt-10 space-y-4 h-full bg-[#0A0A0B]">
-<div class="glass-card p-4 rounded-2xl border-accent-violet/20">
-<span class="text-[10px] text-accent-violet font-bold uppercase tracking-tighter">Today's Focus Plan</span>
-<div class="mt-2 h-2 w-full bg-white/5 rounded-full overflow-hidden">
-<div class="h-full w-[65%] bg-accent-violet rounded-full"></div>
-</div>
-<p class="text-[12px] mt-2 text-white/80">3 tasks remaining</p>
-</div>
-<div class="bg-accent-violet/10 border border-accent-violet/20 p-4 rounded-2xl">
-<div class="flex items-center gap-2 mb-2">
-<span class="material-symbols-outlined text-accent-violet text-[16px]">psychology</span>
-<span class="text-[11px] font-bold text-accent-violet">Coach Suggestion</span>
-</div>
-<p class="text-[13px] text-text-primary leading-snug italic">"You usually drop focus at 3 PM. Let's schedule a 10-min reset now."</p>
-</div>
-<div class="glass-card p-4 rounded-2xl space-y-3">
-<span class="text-[10px] text-text-secondary uppercase">Screen Time</span>
-<div class="flex items-end gap-1 h-12">
-<div class="bg-accent-violet/40 w-full h-[40%] rounded-sm"></div>
-<div class="bg-accent-violet/40 w-full h-[60%] rounded-sm"></div>
-<div class="bg-accent-violet w-full h-[30%] rounded-sm"></div>
-<div class="bg-accent-violet/40 w-full h-[80%] rounded-sm"></div>
-<div class="bg-accent-violet/40 w-full h-[50%] rounded-sm"></div>
-</div>
-</div>
-<div class="glass-card p-4 rounded-2xl flex items-center justify-between">
-<div class="space-y-1">
-<span class="text-[10px] text-text-secondary uppercase">Morning Ritual</span>
-<p class="text-[13px] font-medium">Deep Work Session</p>
-</div>
-<span class="material-symbols-outlined text-text-secondary">play_circle</span>
-</div>
-</div>
-</div>
-<!-- Decorative background glow for mockup -->
-<div class="absolute -inset-10 bg-accent-violet/20 blur-[100px] -z-10"></div>
-</div>
-</div>
-</section>
-<!-- Problem Section -->
-<section class="py-24 bg-surface/30 border-y border-glass-border">
-<div class="max-w-[1200px] mx-auto px-margin-mobile md:px-margin-desktop text-center mb-16">
-<h2 class="font-headline-lg text-headline-lg text-text-primary mb-6">Your phone is not the problem.<br/><span class="text-text-secondary">The pull is.</span></h2>
-<p class="font-body-lg text-body-lg text-text-secondary max-w-2xl mx-auto">
-                    Traditional apps punish you for distractions. Sway helps you build a calmer system to notice patterns and recover attention gently.
-                </p>
-</div>
-<div class="max-w-[1200px] mx-auto px-margin-mobile md:px-margin-desktop grid grid-cols-1 md:grid-cols-3 gap-8">
-<div class="glass-card p-8 rounded-3xl space-y-4">
-<div class="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center">
-<span class="material-symbols-outlined text-text-secondary">notifications_off</span>
-</div>
-<h3 class="font-headline-md text-headline-md">Endless checking</h3>
-<p class="text-text-secondary font-body-md">The reflexive loop of checking feeds that fractures your mental continuity throughout the day.</p>
-</div>
-<div class="glass-card p-8 rounded-3xl space-y-4">
-<div class="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center">
-<span class="material-symbols-outlined text-text-secondary">sync_problem</span>
-</div>
-<h3 class="font-headline-md text-headline-md">Broken routines</h3>
-<p class="text-text-secondary font-body-md">Rigid schedules that fall apart the moment life gets unpredictable or energy levels dip.</p>
-</div>
-<div class="glass-card p-8 rounded-3xl space-y-4">
-<div class="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center">
-<span class="material-symbols-outlined text-text-secondary">mountain_flag</span>
-</div>
-<h3 class="font-headline-md text-headline-md">Over-ambition</h3>
-<p class="text-text-secondary font-body-md">Focus plans that demand 100% willpower, leading to guilt and abandonment when they fail.</p>
-</div>
-</div>
-</section>
-<!-- Product Section (Bento Grid Style) -->
-<section class="py-32 max-w-[1200px] mx-auto px-margin-mobile md:px-margin-desktop" id="features">
-<h2 class="font-headline-lg text-headline-lg mb-16">Built around your real day.</h2>
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-<!-- AI Focus Coach -->
-<div class="glass-card lg:col-span-2 p-10 rounded-3xl flex flex-col justify-between group">
-<div class="space-y-4">
-<h3 class="font-headline-md text-headline-md">AI focus coach</h3>
-<p class="text-text-secondary font-body-md max-w-sm">A silent partner that understands your rhythms. It suggests breaks before you burn out and sessions when you're most alert.</p>
-</div>
-<div class="mt-12 h-48 overflow-hidden relative rounded-2xl bg-[#0A0A0B] border border-white/5 p-6">
-<div class="absolute inset-x-0 top-6 space-y-4">
-<div class="bg-white/5 p-3 rounded-lg border border-white/5 w-4/5 ml-auto">
-<p class="text-xs text-text-secondary">I'm feeling scattered right now.</p>
-</div>
-<div class="bg-accent-violet/10 p-3 rounded-lg border border-accent-violet/20 w-4/5">
-<p class="text-xs text-accent-violet">Understandable. Let's try a 15-minute 'soft focus' session to bridge the gap.</p>
-</div>
-</div>
-</div>
-</div>
-<!-- Adaptive Routines -->
-<div class="glass-card p-10 rounded-3xl flex flex-col group">
-<h3 class="font-headline-md text-headline-md mb-4">Adaptive routines</h3>
-<p class="text-text-secondary font-body-md flex-grow">Routines that shift with your schedule, not against it. Life happens, Sway adjusts.</p>
-<div class="mt-8 flex justify-center">
-<span class="material-symbols-outlined text-accent-violet text-[64px] opacity-40">event_repeat</span>
-</div>
-</div>
-<!-- Focus Sessions -->
-<div class="glass-card p-10 rounded-3xl flex flex-col group">
-<h3 class="font-headline-md text-headline-md mb-4">Focus sessions</h3>
-<p class="text-text-secondary font-body-md flex-grow">Immersive, lightweight timers designed to keep you in flow without the anxiety of a ticking clock.</p>
-<div class="mt-8 flex justify-center">
-<span class="material-symbols-outlined text-accent-violet text-[64px] opacity-40">hourglass_empty</span>
-</div>
-</div>
-<!-- Screen Time Insights -->
-<div class="glass-card lg:col-span-4 p-10 rounded-3xl flex flex-col md:flex-row gap-12 items-center">
-<div class="max-w-md space-y-4">
-<h3 class="font-headline-md text-headline-md">Gentle screen time insights</h3>
-<p class="text-text-secondary font-body-md">Contextual data that helps you understand 'why' you pick up your phone, rather than just showing you 'how long'. No guilt, just awareness.</p>
-</div>
-<div class="flex-grow w-full flex gap-4 h-32 items-end">
-<div class="flex-1 bg-white/5 h-[30%] rounded-xl transition-all hover:h-[40%] hover:bg-accent-violet/30"></div>
-<div class="flex-1 bg-white/5 h-[60%] rounded-xl transition-all hover:h-[70%] hover:bg-accent-violet/30"></div>
-<div class="flex-1 bg-white/5 h-[45%] rounded-xl transition-all hover:h-[55%] hover:bg-accent-violet/30"></div>
-<div class="flex-1 bg-accent-violet h-[85%] rounded-xl"></div>
-<div class="flex-1 bg-white/5 h-[40%] rounded-xl transition-all hover:h-[50%] hover:bg-accent-violet/30"></div>
-<div class="flex-1 bg-white/5 h-[20%] rounded-xl transition-all hover:h-[30%] hover:bg-accent-violet/30"></div>
-</div>
-</div>
-</div>
-</section>
-<!-- How it Works -->
-<section class="py-32 bg-surface/30" id="how-it-works">
-<div class="max-w-[1200px] mx-auto px-margin-mobile md:px-margin-desktop">
-<div class="flex flex-col md:flex-row gap-16">
-<div class="md:w-1/3">
-<h2 class="font-headline-lg text-headline-lg mb-4">The journey to focus.</h2>
-<p class="text-text-secondary font-body-md">Building attention is a practice, not a destination. Sway supports every step.</p>
-</div>
-<div class="md:w-2/3 space-y-16">
-<div class="relative flex gap-8 group">
-<div class="z-10 flex-shrink-0 w-10 h-10 rounded-full bg-accent-violet flex items-center justify-center font-bold text-white shadow-[0_0_20px_rgba(139,92,246,0.4)]">1</div>
-<div class="step-line relative">
-<h4 class="font-headline-md text-headline-md mb-2">Identify your goals</h4>
-<p class="text-text-secondary font-body-lg">Tell Sway what you want to improve—whether it's morning focus, evening winding down, or reducing mindless scrolling during work hours.</p>
-</div>
-</div>
-<div class="relative flex gap-8 group">
-<div class="z-10 flex-shrink-0 w-10 h-10 rounded-full bg-[#1A1A1E] border border-white/10 flex items-center justify-center font-bold text-text-secondary group-hover:bg-accent-violet group-hover:text-white transition-all">2</div>
-<div class="step-line relative">
-<h4 class="font-headline-md text-headline-md mb-2">Start realistic</h4>
-<p class="text-text-secondary font-body-lg">Begin with a focus plan that feels easy to achieve. Sway prioritizes consistency over intensity to build lasting mental habits.</p>
-</div>
-</div>
-<div class="relative flex gap-8 group">
-<div class="z-10 flex-shrink-0 w-10 h-10 rounded-full bg-[#1A1A1E] border border-white/10 flex items-center justify-center font-bold text-text-secondary group-hover:bg-accent-violet group-hover:text-white transition-all">3</div>
-<div class="relative">
-<h4 class="font-headline-md text-headline-md mb-2">Continuous adaptation</h4>
-<p class="text-text-secondary font-body-lg">Let Sway adjust the rhythm over time. As your focus improves, the system scales with you, providing deeper coaching and more refined insights.</p>
-</div>
-</div>
-</div>
-</div>
-</div>
-</section>
-<!-- Privacy Section -->
-<section class="py-32" id="privacy">
-<div class="max-w-[1200px] mx-auto px-margin-mobile md:px-margin-desktop">
-<div class="glass-card p-12 md:p-20 rounded-[3rem] text-center overflow-hidden relative">
-<!-- Privacy Icon Decor -->
-<div class="absolute -top-10 -left-10 w-40 h-40 bg-accent-violet/5 blur-[50px] rounded-full"></div>
-<div class="absolute -bottom-10 -right-10 w-40 h-40 bg-accent-violet/5 blur-[50px] rounded-full"></div>
-<div class="inline-flex items-center justify-center w-20 h-20 rounded-full bg-white/5 border border-white/10 mb-8">
-<span class="material-symbols-outlined text-accent-violet text-[40px]" style="font-variation-settings: 'FILL' 1;">verified_user</span>
-</div>
-<h2 class="font-headline-lg text-headline-lg mb-6">Private by design.</h2>
-<p class="font-body-lg text-body-lg text-text-secondary max-w-2xl mx-auto mb-10">
-                        Sway is designed to keep sensitive screen time context private. We use only the minimum context needed for helpful coaching, and your data never leaves your personal secure vault.
-                    </p>
-<div class="flex flex-wrap justify-center gap-4 text-sm font-label-md text-text-secondary">
-<div class="flex items-center gap-2 bg-white/5 px-4 py-2 rounded-full border border-white/5">
-<span class="material-symbols-outlined text-[16px] text-green-400">check_circle</span> On-device processing
-                        </div>
-<div class="flex items-center gap-2 bg-white/5 px-4 py-2 rounded-full border border-white/5">
-<span class="material-symbols-outlined text-[16px] text-green-400">check_circle</span> End-to-end encrypted
-                        </div>
-<div class="flex items-center gap-2 bg-white/5 px-4 py-2 rounded-full border border-white/5">
-<span class="material-symbols-outlined text-[16px] text-green-400">check_circle</span> No ad tracking
-                        </div>
-</div>
-</div>
-</div>
-</section>
-<!-- Audience Section -->
-<section class="py-24 max-w-[1200px] mx-auto px-margin-mobile md:px-margin-desktop">
-<h2 class="font-headline-lg text-headline-lg text-center mb-16">Made for people who want focus without pressure.</h2>
-<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-<div class="p-8 border border-white/5 rounded-3xl hover:bg-white/5 transition-colors">
-<h4 class="font-headline-md text-headline-md mb-3">Students</h4>
-<p class="text-text-secondary text-sm">Managing heavy study loads without digital burnout.</p>
-</div>
-<div class="p-8 border border-white/5 rounded-3xl hover:bg-white/5 transition-colors">
-<h4 class="font-headline-md text-headline-md mb-3">Makers</h4>
-<p class="text-text-secondary text-sm">Developers and creators needing deep blocks of creative flow.</p>
-</div>
-<div class="p-8 border border-white/5 rounded-3xl hover:bg-white/5 transition-colors">
-<h4 class="font-headline-md text-headline-md mb-3">Remote workers</h4>
-<p class="text-text-secondary text-sm">Separating work from home life when the boundaries blur.</p>
-</div>
-<div class="p-8 border border-white/5 rounded-3xl hover:bg-white/5 transition-colors">
-<h4 class="font-headline-md text-headline-md mb-3">Rebuilders</h4>
-<p class="text-text-secondary text-sm">People intentional about rebuilding their cognitive habits.</p>
-</div>
-</div>
-</section>
-<!-- Final CTA -->
-<section class="py-32 mb-20">
-<div class="max-w-[1200px] mx-auto px-margin-mobile md:px-margin-desktop">
-<div class="relative bg-gradient-to-tr from-[#121214] to-[#1A1A1E] p-12 md:p-24 rounded-[3rem] border border-glass-border overflow-hidden text-center">
-<div class="relative z-10 space-y-8">
-<h2 class="font-display-lg text-[36px] md:text-display-lg">Start building a calmer<br/>focus rhythm.</h2>
-<p class="text-text-secondary font-body-lg max-w-xl mx-auto">Join the waitlist to be among the first to experience a new way of interacting with your digital environment.</p>
-<div class="max-w-md mx-auto space-y-4" id="cta-form">
-<form class="flex flex-col sm:flex-row gap-3" onsubmit="handleSubmit(event)">
-<input class="flex-grow bg-bg-base border border-white/10 rounded-full px-6 py-4 text-text-primary focus:outline-none focus:border-accent-violet transition-colors" placeholder="Enter your email" required="" type="email"/>
-<button class="bg-gradient-to-r from-[#7C7CF8] to-[#8B5CF6] px-8 py-4 rounded-full font-label-md text-label-md text-white primary-glow active:scale-95 transition-all" type="submit">
-                                    Join waitlist
-                                </button>
-</form>
-<p class="text-[12px] text-text-secondary">Limited spots available for beta testers.</p>
-</div>
-<div class="hidden max-w-md mx-auto p-8 glass-card rounded-2xl animate-in fade-in zoom-in duration-500" id="success-state">
-<span class="material-symbols-outlined text-accent-violet text-[48px] mb-4">check_circle</span>
-<h3 class="font-headline-md text-headline-md mb-2">You're on the list!</h3>
-<p class="text-text-secondary">We'll reach out when we're ready to onboard new focusers.</p>
-</div>
-</div>
-<!-- Background decor for CTA -->
-<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-[80%] bg-accent-violet/10 blur-[120px] rounded-full pointer-events-none"></div>
-</div>
-</div>
-</section>
-</main>
-<!-- Footer -->
-<footer class="border-t border-glass-border py-16">
-<div class="max-w-[1200px] mx-auto px-margin-mobile md:px-margin-desktop flex flex-col md:flex-row justify-between items-center gap-8">
-<div class="flex flex-col items-center md:items-start gap-4">
-<div class="flex items-center gap-2">
-<div class="w-6 h-6 bg-gradient-to-tr from-accent-violet to-primary-container rounded flex items-center justify-center">
-<span class="material-symbols-outlined text-white text-[14px]" style="font-variation-settings: 'FILL' 1;">waves</span>
-</div>
-<span class="font-headline-md text-headline-md font-bold text-text-primary text-[20px]">Sway</span>
-</div>
-<p class="font-body-sm text-label-md text-text-secondary text-center md:text-left">© 2024 Sway Focus. Built for cognitive flow.</p>
-</div>
-<div class="flex gap-8">
-<a class="font-body-sm text-label-md text-text-secondary hover:text-accent-violet transition-colors" href="#">Privacy</a>
-<a class="font-body-sm text-label-md text-text-secondary hover:text-accent-violet transition-colors" href="#">Contact</a>
-<a class="font-body-sm text-label-md text-text-secondary hover:text-accent-violet transition-colors" href="#">App Store</a>
-</div>
-</div>
-</footer>
-<script>
-        function handleSubmit(event) {
-            event.preventDefault();
-            document.getElementById('cta-form').classList.add('hidden');
-            document.getElementById('success-state').classList.remove('hidden');
-            
-            // Add a little sparkle effect or something local here
-            console.log("Joined waitlist successfully.");
-        }
 
-        // Simple scroll reveal interaction
-        const observerOptions = {
-            threshold: 0.1
-        };
+<body>
+  <div class="page">
+    <nav class="nav">
+      <div class="container nav-inner">
+        <a href="#" class="brand" aria-label="Sway homepage">
+          <span class="brand-mark">S</span>
+          <span>Sway</span>
+        </a>
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('animate-in', 'fade-in', 'slide-in-from-bottom-10', 'duration-1000');
-                    observer.unobserve(entry</script></body></html>
+        <div class="nav-links">
+          <a href="#features">Features</a>
+          <a href="#how">How it works</a>
+          <a href="#privacy">Privacy</a>
+          <a href="#waitlist" class="nav-cta">Join waitlist</a>
+        </div>
+      </div>
+    </nav>
+
+    <main>
+      <header class="hero">
+        <div class="container hero-grid">
+          <div>
+            <div class="eyebrow">
+              <span class="pulse"></span>
+              AI supported focus coach
+            </div>
+
+            <h1>
+              Focus with <span class="hero-gradient">less friction.</span>
+            </h1>
+
+            <p class="hero-copy">
+              Sway helps you plan realistic focus sessions, adjust your routines, and reduce phone distraction without turning productivity into pressure.
+            </p>
+
+            <div class="actions">
+              <a class="btn btn-primary" href="#waitlist">Join the waitlist</a>
+              <a class="btn btn-secondary" href="#how">See how Sway works</a>
+            </div>
+
+            <p class="hero-note">
+              Built for iPhone users who want calmer focus, better routines, and fewer automatic checks.
+            </p>
+          </div>
+
+          <div class="phone-wrap" aria-label="Sway app preview">
+            <div class="phone-glow"></div>
+
+            <div class="phone">
+              <div class="phone-screen">
+                <div class="phone-top">
+                  <span>Today</span>
+                  <span class="mini-pill">Coach pick</span>
+                </div>
+
+                <h2 class="app-title">Your plan</h2>
+                <p class="app-subtitle">A calmer rhythm for today.</p>
+
+                <div class="coach-card">
+                  <div class="coach-row">
+                    <div class="icon-bubble">✦</div>
+                    <div>
+                      <h3>Start small</h3>
+                      <p>25 minutes is enough to begin.</p>
+                    </div>
+                  </div>
+                  <p>Sway noticed your afternoon tends to pull you back into your phone. Try one protected reset before the next task.</p>
+                </div>
+
+                <div class="session-card">
+                  <div class="session-meta">
+                    <span class="time-chip">25 min</span>
+                    <span class="time-chip">Focus</span>
+                  </div>
+                  <h3>Scroll Reset</h3>
+                  <p>Put the phone aside and begin a clean focus block.</p>
+                </div>
+
+                <div class="plan-card">
+                  <h3>Today’s plan</h3>
+
+                  <div class="plan-item">
+                    <span class="check">✓</span>
+                    <span>Morning focus sprint</span>
+                    <span class="plan-time">08:00</span>
+                  </div>
+
+                  <div class="plan-item">
+                    <span class="check">✓</span>
+                    <span>Afternoon reset</span>
+                    <span class="plan-time">14:30</span>
+                  </div>
+
+                  <div class="plan-item">
+                    <span class="check">○</span>
+                    <span>Evening screen reset</span>
+                    <span class="plan-time">19:30</span>
+                  </div>
+                </div>
+
+                <div class="stat-grid">
+                  <div class="stat-card">
+                    <strong>25 dk</strong>
+                    <span>Weekly focus</span>
+                  </div>
+
+                  <div class="stat-card">
+                    <strong>3</strong>
+                    <span>Routines ready</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <section>
+        <div class="container">
+          <div class="section-head">
+            <div class="section-kicker">The problem</div>
+            <h2>Your phone is not the problem. The pull is.</h2>
+            <p class="section-copy">
+              Most focus apps add more rules. Sway gives you a calmer system that helps you notice patterns, start smaller, and recover attention during the day.
+            </p>
+          </div>
+
+          <div class="cards">
+            <article class="card">
+              <div class="card-icon">↺</div>
+              <h3>Endless checking</h3>
+              <p>That quick look often becomes a loop. Sway helps you interrupt the automatic pull before it owns the next hour.</p>
+            </article>
+
+            <article class="card">
+              <div class="card-icon">◷</div>
+              <h3>Broken routines</h3>
+              <p>Plans fail when they ignore your real day. Sway keeps routines practical, flexible, and easier to restart.</p>
+            </article>
+
+            <article class="card">
+              <div class="card-icon">⌁</div>
+              <h3>Plans too heavy</h3>
+              <p>You do not need a perfect productivity system. You need the next focus step that feels possible right now.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="features">
+        <div class="container">
+          <div class="section-head">
+            <div class="section-kicker">Features</div>
+            <h2>Built around your real day.</h2>
+            <p class="section-copy">
+              Sway combines focus sessions, routines, gentle insights, and AI coaching into one calm experience.
+            </p>
+          </div>
+
+          <div class="feature-grid">
+            <article class="card">
+              <div class="card-icon">✦</div>
+              <h3>AI focus coach</h3>
+              <p>Get simple suggestions that help you begin, adjust, and recover without judgment.</p>
+            </article>
+
+            <article class="card">
+              <div class="card-icon">☼</div>
+              <h3>Adaptive routines</h3>
+              <p>Create daily focus rhythms that can change as your schedule and energy change.</p>
+            </article>
+
+            <article class="card">
+              <div class="card-icon">▶</div>
+              <h3>Focus sessions</h3>
+              <p>Start protected blocks that make it easier to step away from automatic phone use.</p>
+            </article>
+
+            <article class="card">
+              <div class="card-icon">◌</div>
+              <h3>Gentle insights</h3>
+              <p>Understand your focus patterns with calm feedback instead of guilt heavy dashboards.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="how">
+        <div class="container">
+          <div class="wide-panel">
+            <div class="section-head">
+              <div class="section-kicker">How it works</div>
+              <h2>A focus plan that starts realistic.</h2>
+              <p class="section-copy">
+                Sway is designed to help you start with a small, useful plan and improve the rhythm over time.
+              </p>
+            </div>
+
+            <div class="steps">
+              <article class="step">
+                <h3>Share your focus goal</h3>
+                <p>Tell Sway what you want to improve, when your phone pulls you most, and what kind of day you are trying to build.</p>
+              </article>
+
+              <article class="step">
+                <h3>Begin with one plan</h3>
+                <p>Start with realistic focus sessions and routines instead of an intense schedule that collapses after one day.</p>
+              </article>
+
+              <article class="step">
+                <h3>Adjust the rhythm</h3>
+                <p>Sway helps your plan evolve with small coaching moments, better timing, and calmer recovery.</p>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="privacy">
+        <div class="container privacy">
+          <div>
+            <div class="section-kicker">Privacy</div>
+            <h2>Private by design.</h2>
+            <p class="section-copy">
+              Sway is designed with sensitive focus context in mind. The goal is helpful coaching without exposing more than needed.
+            </p>
+          </div>
+
+          <div class="privacy-list">
+            <div class="privacy-item">
+              <div class="icon-bubble">✓</div>
+              <div>
+                <strong>Minimum context</strong>
+                Sway is built to use only the context needed to guide your focus plan.
+              </div>
+            </div>
+
+            <div class="privacy-item">
+              <div class="icon-bubble">✓</div>
+              <div>
+                <strong>No shame based design</strong>
+                Insights are calm and practical, not built to make you feel guilty.
+              </div>
+            </div>
+
+            <div class="privacy-item">
+              <div class="icon-bubble">✓</div>
+              <div>
+                <strong>Clear coaching</strong>
+                Suggestions stay short, useful, and focused on the next step.
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section>
+        <div class="container">
+          <div class="section-head">
+            <div class="section-kicker">Who it is for</div>
+            <h2>For people who want focus without pressure.</h2>
+          </div>
+
+          <div class="audience-grid">
+            <article class="audience">
+              <span>🎓</span>
+              <h3>Students</h3>
+              <p>Build study blocks that are easier to start and repeat.</p>
+            </article>
+
+            <article class="audience">
+              <span>💻</span>
+              <h3>Makers</h3>
+              <p>Protect deep work when your phone keeps stealing the edge.</p>
+            </article>
+
+            <article class="audience">
+              <span>🏠</span>
+              <h3>Remote workers</h3>
+              <p>Create structure when the day has too many soft distractions.</p>
+            </article>
+
+            <article class="audience">
+              <span>🌙</span>
+              <h3>Routine rebuilders</h3>
+              <p>Restart with small focus rhythms that do not feel heavy.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="cta" id="waitlist">
+        <div class="container">
+          <div class="cta-panel">
+            <div class="eyebrow" style="margin-left:auto;margin-right:auto;">
+              <span class="pulse"></span>
+              Coming soon
+            </div>
+
+            <h2>Start building a calmer focus rhythm.</h2>
+            <p>
+              Join the waitlist and be first to try Sway when it launches on the App Store.
+            </p>
+
+            <form class="waitlist" id="waitlistForm">
+              <input type="email" placeholder="Enter your email" aria-label="Email address" required />
+              <button class="btn btn-primary" type="submit">Join waitlist</button>
+            </form>
+
+            <div class="success" id="successMessage">
+              You are on the list. Sway will meet you soon.
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="container footer-inner">
+        <div class="brand">
+          <span class="brand-mark">S</span>
+          <span>Sway</span>
+        </div>
+
+        <div>AI supported focus coach</div>
+
+        <div class="footer-links">
+          <a href="#">Privacy</a>
+          <a href="mailto:hello@swayfocus.com">Contact</a>
+          <a href="#">App Store coming soon</a>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    const form = document.getElementById("waitlistForm");
+    const successMessage = document.getElementById("successMessage");
+
+    form.addEventListener("submit", function (event) {
+      event.preventDefault();
+      successMessage.classList.add("visible");
+      form.reset();
+    });
+  </script>
+</body>
+</html>
