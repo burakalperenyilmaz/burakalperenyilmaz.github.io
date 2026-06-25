@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Sway Focus — AI Focus Coach for Better Routines</title>
+<meta content="Sway is an AI-supported focus coach that helps you plan realistic focus sessions, adjust routines, and reduce phone distraction." name="description"/>
+<!-- Fonts & Icons -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Scripts -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface": "#131314",
+                    "accent-violet": "#8B5CF6",
+                    "on-error-container": "#ffdad6",
+                    "inverse-on-surface": "#313031",
+                    "glass-border": "rgba(255, 255, 255, 0.08)",
+                    "on-primary-fixed": "#0b006b",
+                    "on-secondary-fixed-variant": "#454653",
+                    "on-tertiary-fixed-variant": "#643f00",
+                    "accent-slate": "#475569",
+                    "surface-container-lowest": "#0e0e0f",
+                    "surface-variant": "#353436",
+                    "tertiary-fixed-dim": "#ffb959",
+                    "surface-container-highest": "#353436",
+                    "on-background": "#e5e2e3",
+                    "tertiary": "#ffb959",
+                    "on-surface": "#e5e2e3",
+                    "primary-container": "#8283ff",
+                    "on-secondary-fixed": "#191b27",
+                    "outline": "#918f9f",
+                    "background": "#131314",
+                    "on-tertiary-fixed": "#2a1800",
+                    "on-secondary-container": "#b7b7c7",
+                    "error": "#ffb4ab",
+                    "on-tertiary-container": "#3d2400",
+                    "on-surface-variant": "#c7c4d6",
+                    "inverse-surface": "#e5e2e3",
+                    "tertiary-container": "#c6820c",
+                    "on-secondary": "#2e2f3c",
+                    "error-container": "#93000a",
+                    "text-primary": "#F8FAFC",
+                    "on-error": "#690005",
+                    "secondary-container": "#474856",
+                    "inverse-primary": "#4f4ec8",
+                    "bg-base": "#0A0A0B",
+                    "on-primary-fixed-variant": "#3633af",
+                    "surface-container": "#201f20",
+                    "secondary": "#c5c5d6",
+                    "primary-fixed": "#e2dfff",
+                    "on-tertiary": "#462b00",
+                    "secondary-fixed-dim": "#c5c5d6",
+                    "primary": "#c2c1ff",
+                    "tertiary-fixed": "#ffddb6",
+                    "surface-tint": "#c2c1ff",
+                    "secondary-fixed": "#e2e1f2",
+                    "surface-container-high": "#2a2a2b",
+                    "surface-container-low": "#1c1b1c",
+                    "on-primary": "#1c119a",
+                    "surface-bright": "#3a393a",
+                    "surface-dim": "#131314",
+                    "primary-fixed-dim": "#c2c1ff",
+                    "bg-surface": "#121214",
+                    "text-secondary": "#94A3B8",
+                    "outline-variant": "#464553",
+                    "on-primary-container": "#130094"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "gutter": "24px",
+                    "stack-md": "16px",
+                    "stack-sm": "8px",
+                    "margin-mobile": "20px",
+                    "margin-desktop": "80px",
+                    "stack-lg": "32px",
+                    "unit": "4px"
+            },
+            "fontFamily": {
+                    "body-lg": ["Inter"],
+                    "label-md": ["Inter"],
+                    "display-lg": ["Inter"],
+                    "headline-lg-mobile": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "body-md": ["Inter"],
+                    "label-sm": ["Inter"],
+                    "headline-lg": ["Inter"]
+            },
+            "fontSize": {
+                    "body-lg": ["18px", {"lineHeight": "1.6", "letterSpacing": "0em", "fontWeight": "400"}],
+                    "label-md": ["14px", {"lineHeight": "1.4", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                    "display-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.03em", "fontWeight": "600"}],
+                    "headline-lg-mobile": ["28px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                    "headline-md": ["24px", {"lineHeight": "1.3", "letterSpacing": "-0.01em", "fontWeight": "500"}],
+                    "body-md": ["16px", {"lineHeight": "1.5", "letterSpacing": "0em", "fontWeight": "400"}],
+                    "label-sm": ["12px", {"lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                    "headline-lg": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #0A0A0B;
+            color: #F8FAFC;
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+        .glass-card {
+            background: rgba(18, 18, 20, 0.6);
+            backdrop-filter: blur(32px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        }
+        .glass-card:hover {
+            border-color: rgba(139, 92, 246, 0.3);
+            transition: border-color 0.3s ease;
+        }
+        .primary-glow:hover {
+            box-shadow: 0 0 20px rgba(139, 92, 246, 0.4);
+        }
+        .ambient-glow {
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(139, 92, 246, 0.1) 0%, rgba(139, 92, 246, 0) 70%);
+            z-index: -1;
+            pointer-events: none;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 200, 'GRAD' 0, 'opsz' 24;
+        }
+        .step-line::after {
+            content: '';
+            position: absolute;
+            top: 40px;
+            bottom: 0;
+            left: 20px;
+            width: 1px;
+            background: rgba(255, 255, 255, 0.1);
+        }
+    </style>
+</head>
+<body class="bg-bg-base text-text-primary selection:bg-accent-violet/30">
+<!-- Ambient Accents -->
+<div class="ambient-glow top-[-100px] right-[-50px]"></div>
+<div class="ambient-glow bottom-[10%]" style="left: -100px; background: radial-gradient(circle, rgba(139, 92, 246, 0.05) 0%, rgba(139, 92, 246, 0) 70%);"></div>
+<!-- Navigation -->
+<header class="bg-surface/60 backdrop-blur-xl border-b border-glass-border docked full-width top-0 sticky shadow-sm z-50">
+<div class="max-w-[1200px] mx-auto px-margin-mobile md:px-margin-desktop flex justify-between items-center h-20 w-full">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 bg-gradient-to-tr from-accent-violet to-primary-container rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-white text-[20px]" style="font-variation-settings: 'FILL' 1;">waves</span>
+</div>
+<span class="font-headline-md text-headline-md font-bold text-text-primary tracking-tight">Sway</span>
+</div>
+<nav class="hidden md:flex items-center gap-10">
+<a class="font-body-md text-body-md text-text-secondary hover:text-accent-violet transition-colors duration-300" href="#how-it-works">How it works</a>
+<a class="font-body-md text-body-md text-text-secondary hover:text-accent-violet transition-colors duration-300" href="#features">Features</a>
+<a class="font-body-md text-body-md text-text-secondary hover:text-accent-violet transition-colors duration-300" href="#privacy">Privacy</a>
+</nav>
+<button class="bg-gradient-to-r from-[#7C7CF8] to-[#8B5CF6] px-6 py-2.5 rounded-full font-label-md text-label-md text-white primary-glow active:scale-95 transition-all">
+                Join Waitlist
+            </button>
+</div>
+</header>
+<main>
+<!-- Hero Section -->
+<section class="relative pt-16 md:pt-32 pb-24 max-w-[1200px] mx-auto px-margin-mobile md:px-margin-desktop">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+<div class="space-y-8 max-w-xl">
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent-violet/10 border border-accent-violet/20">
+<span class="w-1.5 h-1.5 rounded-full bg-accent-violet animate-pulse"></span>
+<span class="text-accent-violet font-label-sm text-label-sm uppercase tracking-widest">Waitlist Open</span>
+</div>
+<h1 class="font-display-lg text-[44px] md:text-display-lg leading-[1.1] text-text-primary">
+                        Focus with <br/><span class="text-accent-violet">less friction.</span>
+</h1>
+<p class="font-body-lg text-body-lg text-text-secondary">
+                        Sway is an AI-supported focus coach that helps you plan realistic focus sessions, adjust your routines, and reduce phone distraction without making productivity feel heavy.
+                    </p>
+<div class="flex flex-col sm:flex-row gap-4 pt-4">
+<button class="bg-gradient-to-r from-[#7C7CF8] to-[#8B5CF6] px-8 py-4 rounded-full font-label-md text-label-md text-white primary-glow active:scale-95 transition-all flex items-center justify-center gap-2">
+                            Join the waitlist <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+<button class="bg-white/5 border border-white/10 px-8 py-4 rounded-full font-label-md text-label-md text-text-primary hover:bg-white/10 transition-all text-center">
+                            See how it works
+                        </button>
+</div>
+</div>
+<div class="relative">
+<!-- iPhone Mockup Container -->
+<div class="relative mx-auto w-[280px] h-[580px] bg-[#000] rounded-[3rem] border-[8px] border-[#1A1A1E] shadow-2xl overflow-hidden ring-1 ring-white/10">
+<div class="absolute top-0 w-full h-6 bg-[#000] z-20 flex justify-center">
+<div class="w-24 h-5 bg-[#000] rounded-b-2xl"></div>
+</div>
+<!-- UI Elements Inside iPhone -->
+<div class="p-6 pt-10 space-y-4 h-full bg-[#0A0A0B]">
+<div class="glass-card p-4 rounded-2xl border-accent-violet/20">
+<span class="text-[10px] text-accent-violet font-bold uppercase tracking-tighter">Today's Focus Plan</span>
+<div class="mt-2 h-2 w-full bg-white/5 rounded-full overflow-hidden">
+<div class="h-full w-[65%] bg-accent-violet rounded-full"></div>
+</div>
+<p class="text-[12px] mt-2 text-white/80">3 tasks remaining</p>
+</div>
+<div class="bg-accent-violet/10 border border-accent-violet/20 p-4 rounded-2xl">
+<div class="flex items-center gap-2 mb-2">
+<span class="material-symbols-outlined text-accent-violet text-[16px]">psychology</span>
+<span class="text-[11px] font-bold text-accent-violet">Coach Suggestion</span>
+</div>
+<p class="text-[13px] text-text-primary leading-snug italic">"You usually drop focus at 3 PM. Let's schedule a 10-min reset now."</p>
+</div>
+<div class="glass-card p-4 rounded-2xl space-y-3">
+<span class="text-[10px] text-text-secondary uppercase">Screen Time</span>
+<div class="flex items-end gap-1 h-12">
+<div class="bg-accent-violet/40 w-full h-[40%] rounded-sm"></div>
+<div class="bg-accent-violet/40 w-full h-[60%] rounded-sm"></div>
+<div class="bg-accent-violet w-full h-[30%] rounded-sm"></div>
+<div class="bg-accent-violet/40 w-full h-[80%] rounded-sm"></div>
+<div class="bg-accent-violet/40 w-full h-[50%] rounded-sm"></div>
+</div>
+</div>
+<div class="glass-card p-4 rounded-2xl flex items-center justify-between">
+<div class="space-y-1">
+<span class="text-[10px] text-text-secondary uppercase">Morning Ritual</span>
+<p class="text-[13px] font-medium">Deep Work Session</p>
+</div>
+<span class="material-symbols-outlined text-text-secondary">play_circle</span>
+</div>
+</div>
+</div>
+<!-- Decorative background glow for mockup -->
+<div class="absolute -inset-10 bg-accent-violet/20 blur-[100px] -z-10"></div>
+</div>
+</div>
+</section>
+<!-- Problem Section -->
+<section class="py-24 bg-surface/30 border-y border-glass-border">
+<div class="max-w-[1200px] mx-auto px-margin-mobile md:px-margin-desktop text-center mb-16">
+<h2 class="font-headline-lg text-headline-lg text-text-primary mb-6">Your phone is not the problem.<br/><span class="text-text-secondary">The pull is.</span></h2>
+<p class="font-body-lg text-body-lg text-text-secondary max-w-2xl mx-auto">
+                    Traditional apps punish you for distractions. Sway helps you build a calmer system to notice patterns and recover attention gently.
+                </p>
+</div>
+<div class="max-w-[1200px] mx-auto px-margin-mobile md:px-margin-desktop grid grid-cols-1 md:grid-cols-3 gap-8">
+<div class="glass-card p-8 rounded-3xl space-y-4">
+<div class="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center">
+<span class="material-symbols-outlined text-text-secondary">notifications_off</span>
+</div>
+<h3 class="font-headline-md text-headline-md">Endless checking</h3>
+<p class="text-text-secondary font-body-md">The reflexive loop of checking feeds that fractures your mental continuity throughout the day.</p>
+</div>
+<div class="glass-card p-8 rounded-3xl space-y-4">
+<div class="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center">
+<span class="material-symbols-outlined text-text-secondary">sync_problem</span>
+</div>
+<h3 class="font-headline-md text-headline-md">Broken routines</h3>
+<p class="text-text-secondary font-body-md">Rigid schedules that fall apart the moment life gets unpredictable or energy levels dip.</p>
+</div>
+<div class="glass-card p-8 rounded-3xl space-y-4">
+<div class="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center">
+<span class="material-symbols-outlined text-text-secondary">mountain_flag</span>
+</div>
+<h3 class="font-headline-md text-headline-md">Over-ambition</h3>
+<p class="text-text-secondary font-body-md">Focus plans that demand 100% willpower, leading to guilt and abandonment when they fail.</p>
+</div>
+</div>
+</section>
+<!-- Product Section (Bento Grid Style) -->
+<section class="py-32 max-w-[1200px] mx-auto px-margin-mobile md:px-margin-desktop" id="features">
+<h2 class="font-headline-lg text-headline-lg mb-16">Built around your real day.</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+<!-- AI Focus Coach -->
+<div class="glass-card lg:col-span-2 p-10 rounded-3xl flex flex-col justify-between group">
+<div class="space-y-4">
+<h3 class="font-headline-md text-headline-md">AI focus coach</h3>
+<p class="text-text-secondary font-body-md max-w-sm">A silent partner that understands your rhythms. It suggests breaks before you burn out and sessions when you're most alert.</p>
+</div>
+<div class="mt-12 h-48 overflow-hidden relative rounded-2xl bg-[#0A0A0B] border border-white/5 p-6">
+<div class="absolute inset-x-0 top-6 space-y-4">
+<div class="bg-white/5 p-3 rounded-lg border border-white/5 w-4/5 ml-auto">
+<p class="text-xs text-text-secondary">I'm feeling scattered right now.</p>
+</div>
+<div class="bg-accent-violet/10 p-3 rounded-lg border border-accent-violet/20 w-4/5">
+<p class="text-xs text-accent-violet">Understandable. Let's try a 15-minute 'soft focus' session to bridge the gap.</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Adaptive Routines -->
+<div class="glass-card p-10 rounded-3xl flex flex-col group">
+<h3 class="font-headline-md text-headline-md mb-4">Adaptive routines</h3>
+<p class="text-text-secondary font-body-md flex-grow">Routines that shift with your schedule, not against it. Life happens, Sway adjusts.</p>
+<div class="mt-8 flex justify-center">
+<span class="material-symbols-outlined text-accent-violet text-[64px] opacity-40">event_repeat</span>
+</div>
+</div>
+<!-- Focus Sessions -->
+<div class="glass-card p-10 rounded-3xl flex flex-col group">
+<h3 class="font-headline-md text-headline-md mb-4">Focus sessions</h3>
+<p class="text-text-secondary font-body-md flex-grow">Immersive, lightweight timers designed to keep you in flow without the anxiety of a ticking clock.</p>
+<div class="mt-8 flex justify-center">
+<span class="material-symbols-outlined text-accent-violet text-[64px] opacity-40">hourglass_empty</span>
+</div>
+</div>
+<!-- Screen Time Insights -->
+<div class="glass-card lg:col-span-4 p-10 rounded-3xl flex flex-col md:flex-row gap-12 items-center">
+<div class="max-w-md space-y-4">
+<h3 class="font-headline-md text-headline-md">Gentle screen time insights</h3>
+<p class="text-text-secondary font-body-md">Contextual data that helps you understand 'why' you pick up your phone, rather than just showing you 'how long'. No guilt, just awareness.</p>
+</div>
+<div class="flex-grow w-full flex gap-4 h-32 items-end">
+<div class="flex-1 bg-white/5 h-[30%] rounded-xl transition-all hover:h-[40%] hover:bg-accent-violet/30"></div>
+<div class="flex-1 bg-white/5 h-[60%] rounded-xl transition-all hover:h-[70%] hover:bg-accent-violet/30"></div>
+<div class="flex-1 bg-white/5 h-[45%] rounded-xl transition-all hover:h-[55%] hover:bg-accent-violet/30"></div>
+<div class="flex-1 bg-accent-violet h-[85%] rounded-xl"></div>
+<div class="flex-1 bg-white/5 h-[40%] rounded-xl transition-all hover:h-[50%] hover:bg-accent-violet/30"></div>
+<div class="flex-1 bg-white/5 h-[20%] rounded-xl transition-all hover:h-[30%] hover:bg-accent-violet/30"></div>
+</div>
+</div>
+</div>
+</section>
+<!-- How it Works -->
+<section class="py-32 bg-surface/30" id="how-it-works">
+<div class="max-w-[1200px] mx-auto px-margin-mobile md:px-margin-desktop">
+<div class="flex flex-col md:flex-row gap-16">
+<div class="md:w-1/3">
+<h2 class="font-headline-lg text-headline-lg mb-4">The journey to focus.</h2>
+<p class="text-text-secondary font-body-md">Building attention is a practice, not a destination. Sway supports every step.</p>
+</div>
+<div class="md:w-2/3 space-y-16">
+<div class="relative flex gap-8 group">
+<div class="z-10 flex-shrink-0 w-10 h-10 rounded-full bg-accent-violet flex items-center justify-center font-bold text-white shadow-[0_0_20px_rgba(139,92,246,0.4)]">1</div>
+<div class="step-line relative">
+<h4 class="font-headline-md text-headline-md mb-2">Identify your goals</h4>
+<p class="text-text-secondary font-body-lg">Tell Sway what you want to improve—whether it's morning focus, evening winding down, or reducing mindless scrolling during work hours.</p>
+</div>
+</div>
+<div class="relative flex gap-8 group">
+<div class="z-10 flex-shrink-0 w-10 h-10 rounded-full bg-[#1A1A1E] border border-white/10 flex items-center justify-center font-bold text-text-secondary group-hover:bg-accent-violet group-hover:text-white transition-all">2</div>
+<div class="step-line relative">
+<h4 class="font-headline-md text-headline-md mb-2">Start realistic</h4>
+<p class="text-text-secondary font-body-lg">Begin with a focus plan that feels easy to achieve. Sway prioritizes consistency over intensity to build lasting mental habits.</p>
+</div>
+</div>
+<div class="relative flex gap-8 group">
+<div class="z-10 flex-shrink-0 w-10 h-10 rounded-full bg-[#1A1A1E] border border-white/10 flex items-center justify-center font-bold text-text-secondary group-hover:bg-accent-violet group-hover:text-white transition-all">3</div>
+<div class="relative">
+<h4 class="font-headline-md text-headline-md mb-2">Continuous adaptation</h4>
+<p class="text-text-secondary font-body-lg">Let Sway adjust the rhythm over time. As your focus improves, the system scales with you, providing deeper coaching and more refined insights.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Privacy Section -->
+<section class="py-32" id="privacy">
+<div class="max-w-[1200px] mx-auto px-margin-mobile md:px-margin-desktop">
+<div class="glass-card p-12 md:p-20 rounded-[3rem] text-center overflow-hidden relative">
+<!-- Privacy Icon Decor -->
+<div class="absolute -top-10 -left-10 w-40 h-40 bg-accent-violet/5 blur-[50px] rounded-full"></div>
+<div class="absolute -bottom-10 -right-10 w-40 h-40 bg-accent-violet/5 blur-[50px] rounded-full"></div>
+<div class="inline-flex items-center justify-center w-20 h-20 rounded-full bg-white/5 border border-white/10 mb-8">
+<span class="material-symbols-outlined text-accent-violet text-[40px]" style="font-variation-settings: 'FILL' 1;">verified_user</span>
+</div>
+<h2 class="font-headline-lg text-headline-lg mb-6">Private by design.</h2>
+<p class="font-body-lg text-body-lg text-text-secondary max-w-2xl mx-auto mb-10">
+                        Sway is designed to keep sensitive screen time context private. We use only the minimum context needed for helpful coaching, and your data never leaves your personal secure vault.
+                    </p>
+<div class="flex flex-wrap justify-center gap-4 text-sm font-label-md text-text-secondary">
+<div class="flex items-center gap-2 bg-white/5 px-4 py-2 rounded-full border border-white/5">
+<span class="material-symbols-outlined text-[16px] text-green-400">check_circle</span> On-device processing
+                        </div>
+<div class="flex items-center gap-2 bg-white/5 px-4 py-2 rounded-full border border-white/5">
+<span class="material-symbols-outlined text-[16px] text-green-400">check_circle</span> End-to-end encrypted
+                        </div>
+<div class="flex items-center gap-2 bg-white/5 px-4 py-2 rounded-full border border-white/5">
+<span class="material-symbols-outlined text-[16px] text-green-400">check_circle</span> No ad tracking
+                        </div>
+</div>
+</div>
+</div>
+</section>
+<!-- Audience Section -->
+<section class="py-24 max-w-[1200px] mx-auto px-margin-mobile md:px-margin-desktop">
+<h2 class="font-headline-lg text-headline-lg text-center mb-16">Made for people who want focus without pressure.</h2>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+<div class="p-8 border border-white/5 rounded-3xl hover:bg-white/5 transition-colors">
+<h4 class="font-headline-md text-headline-md mb-3">Students</h4>
+<p class="text-text-secondary text-sm">Managing heavy study loads without digital burnout.</p>
+</div>
+<div class="p-8 border border-white/5 rounded-3xl hover:bg-white/5 transition-colors">
+<h4 class="font-headline-md text-headline-md mb-3">Makers</h4>
+<p class="text-text-secondary text-sm">Developers and creators needing deep blocks of creative flow.</p>
+</div>
+<div class="p-8 border border-white/5 rounded-3xl hover:bg-white/5 transition-colors">
+<h4 class="font-headline-md text-headline-md mb-3">Remote workers</h4>
+<p class="text-text-secondary text-sm">Separating work from home life when the boundaries blur.</p>
+</div>
+<div class="p-8 border border-white/5 rounded-3xl hover:bg-white/5 transition-colors">
+<h4 class="font-headline-md text-headline-md mb-3">Rebuilders</h4>
+<p class="text-text-secondary text-sm">People intentional about rebuilding their cognitive habits.</p>
+</div>
+</div>
+</section>
+<!-- Final CTA -->
+<section class="py-32 mb-20">
+<div class="max-w-[1200px] mx-auto px-margin-mobile md:px-margin-desktop">
+<div class="relative bg-gradient-to-tr from-[#121214] to-[#1A1A1E] p-12 md:p-24 rounded-[3rem] border border-glass-border overflow-hidden text-center">
+<div class="relative z-10 space-y-8">
+<h2 class="font-display-lg text-[36px] md:text-display-lg">Start building a calmer<br/>focus rhythm.</h2>
+<p class="text-text-secondary font-body-lg max-w-xl mx-auto">Join the waitlist to be among the first to experience a new way of interacting with your digital environment.</p>
+<div class="max-w-md mx-auto space-y-4" id="cta-form">
+<form class="flex flex-col sm:flex-row gap-3" onsubmit="handleSubmit(event)">
+<input class="flex-grow bg-bg-base border border-white/10 rounded-full px-6 py-4 text-text-primary focus:outline-none focus:border-accent-violet transition-colors" placeholder="Enter your email" required="" type="email"/>
+<button class="bg-gradient-to-r from-[#7C7CF8] to-[#8B5CF6] px-8 py-4 rounded-full font-label-md text-label-md text-white primary-glow active:scale-95 transition-all" type="submit">
+                                    Join waitlist
+                                </button>
+</form>
+<p class="text-[12px] text-text-secondary">Limited spots available for beta testers.</p>
+</div>
+<div class="hidden max-w-md mx-auto p-8 glass-card rounded-2xl animate-in fade-in zoom-in duration-500" id="success-state">
+<span class="material-symbols-outlined text-accent-violet text-[48px] mb-4">check_circle</span>
+<h3 class="font-headline-md text-headline-md mb-2">You're on the list!</h3>
+<p class="text-text-secondary">We'll reach out when we're ready to onboard new focusers.</p>
+</div>
+</div>
+<!-- Background decor for CTA -->
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-[80%] bg-accent-violet/10 blur-[120px] rounded-full pointer-events-none"></div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="border-t border-glass-border py-16">
+<div class="max-w-[1200px] mx-auto px-margin-mobile md:px-margin-desktop flex flex-col md:flex-row justify-between items-center gap-8">
+<div class="flex flex-col items-center md:items-start gap-4">
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 bg-gradient-to-tr from-accent-violet to-primary-container rounded flex items-center justify-center">
+<span class="material-symbols-outlined text-white text-[14px]" style="font-variation-settings: 'FILL' 1;">waves</span>
+</div>
+<span class="font-headline-md text-headline-md font-bold text-text-primary text-[20px]">Sway</span>
+</div>
+<p class="font-body-sm text-label-md text-text-secondary text-center md:text-left">© 2024 Sway Focus. Built for cognitive flow.</p>
+</div>
+<div class="flex gap-8">
+<a class="font-body-sm text-label-md text-text-secondary hover:text-accent-violet transition-colors" href="#">Privacy</a>
+<a class="font-body-sm text-label-md text-text-secondary hover:text-accent-violet transition-colors" href="#">Contact</a>
+<a class="font-body-sm text-label-md text-text-secondary hover:text-accent-violet transition-colors" href="#">App Store</a>
+</div>
+</div>
+</footer>
+<script>
+        function handleSubmit(event) {
+            event.preventDefault();
+            document.getElementById('cta-form').classList.add('hidden');
+            document.getElementById('success-state').classList.remove('hidden');
+            
+            // Add a little sparkle effect or something local here
+            console.log("Joined waitlist successfully.");
+        }
+
+        // Simple scroll reveal interaction
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-in', 'fade-in', 'slide-in-from-bottom-10', 'duration-1000');
+                    observer.unobserve(entry</script></body></html>
