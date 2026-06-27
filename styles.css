@@ -161,6 +161,33 @@ button, input {
   background: rgba(22, 207, 160, 0.08);
 }
 
+/* Base Device Mockup Shared Styles */
+.phone-base {
+  position: relative;
+  background: #060807;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 
+    0 25px 60px rgba(0, 0, 0, 0.6), 
+    0 0 0 6px #151816, 
+    0 0 30px rgba(22, 207, 160, 0.1);
+}
+
+.phone-base:before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #020403;
+  z-index: 2;
+  border-radius: 999px;
+}
+
+.phone-base img {
+  width: 100%;
+  aspect-ratio: 946/2048;
+  object-fit: cover;
+}
+
 /* Hero Section */
 .hero {
   position: relative;
@@ -325,26 +352,31 @@ h1 {
   filter: blur(52px);
 }
 
+/* Hero Main Phone */
 .phone {
+  composes: phone-base;
   position: relative;
   width: min(382px, 72vw);
-  padding: 12px;
+  padding: 10px;
   z-index: 6;
-  border-radius: 54px;
+  border-radius: 50px;
   border: 1px solid rgba(255, 255, 255, 0.15);
-  background: linear-gradient(145deg, rgba(255, 255, 255, 0.17), rgba(255, 255, 255, 0.025) 28%, rgba(0, 0, 0, 0.28)), #060807;
-  box-shadow: var(--shadow), 0 0 0 9px rgba(255, 255, 255, 0.026);
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.01) 30%, rgba(0, 0, 0, 0.3)), #060807;
+  box-shadow: 
+    var(--shadow), 
+    0 0 0 6px #151816, 
+    0 0 30px rgba(22, 207, 160, 0.15);
 }
 
 .phone:before {
   content: "";
   position: absolute;
   left: 50%;
-  top: 10px;
-  width: 112px;
-  height: 29px;
+  top: 9px;
+  width: 100px;
+  height: 24px;
   transform: translateX(-50%);
-  border-radius: 0 0 18px 18px;
+  border-radius: 999px;
   background: #020403;
   z-index: 2;
 }
@@ -353,27 +385,45 @@ h1 {
   width: 100%;
   aspect-ratio: 946/2048;
   object-fit: cover;
-  border-radius: 42px;
-  border: 1px solid rgba(124, 248, 207, 0.15);
+  border-radius: 40px;
+  border: 1px solid rgba(124, 248, 207, 0.12);
 }
 
+/* Hero Side Phones */
 .side-phone {
+  composes: phone-base;
   position: absolute;
   width: 188px;
-  padding: 7px;
-  border-radius: 34px;
-  background: rgba(255, 255, 255, 0.055);
-  border: 1px solid rgba(255, 255, 255, 0.11);
-  box-shadow: 0 28px 80px rgba(0, 0, 0, 0.48);
+  padding: 6px;
+  border-radius: 28px;
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.01)), #060807;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 
+    0 20px 60px rgba(0, 0, 0, 0.55), 
+    0 0 0 4px #151816;
   backdrop-filter: blur(18px);
   opacity: 0.82;
   z-index: 3;
 }
 
+.side-phone:before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 5px;
+  width: 52px;
+  height: 12px;
+  transform: translateX(-50%);
+  border-radius: 999px;
+  background: #020403;
+  z-index: 2;
+}
+
 .side-phone img {
-  border-radius: 27px;
+  border-radius: 22px;
   aspect-ratio: 946/2048;
   object-fit: cover;
+  border: 1px solid rgba(124, 248, 207, 0.08);
 }
 
 .side-left {
@@ -491,15 +541,16 @@ h2 {
 }
 
 .editorial-phone {
+  composes: phone-base;
   position: relative;
   width: min(340px, 85%);
   padding: 10px;
-  border-radius: 48px;
-  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 50px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
   background: linear-gradient(145deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.01) 30%, rgba(0, 0, 0, 0.3)), #060807;
   box-shadow: 
     0 25px 60px rgba(0, 0, 0, 0.6), 
-    0 0 0 8px rgba(255, 255, 255, 0.02),
+    0 0 0 6px #151816, 
     0 0 30px rgba(22, 207, 160, 0.1);
 }
 
@@ -508,7 +559,7 @@ h2 {
   position: absolute;
   left: 50%;
   top: 9px;
-  width: 96px;
+  width: 90px;
   height: 24px;
   transform: translateX(-50%);
   border-radius: 999px;
@@ -520,7 +571,7 @@ h2 {
   width: 100%;
   aspect-ratio: 946/2048;
   object-fit: cover;
-  border-radius: 38px;
+  border-radius: 40px;
   border: 1px solid rgba(124, 248, 207, 0.12);
 }
 
@@ -549,7 +600,7 @@ h2 {
   box-shadow: 0 0 0 7px rgba(22, 207, 160, 0.12);
 }
 
-/* Gallery & Screens */
+/* Gallery & Screens (Mini Phone Mockups) */
 .gallery-wrap {
   position: relative;
 }
@@ -557,53 +608,88 @@ h2 {
 .screens {
   display: grid;
   grid-template-columns: repeat(5, minmax(230px, 1fr));
-  gap: 18px;
+  gap: 24px;
   align-items: start;
+  padding: 10px 0;
 }
 
 .screen-tile {
+  composes: phone-base;
   position: relative;
   overflow: hidden;
-  border-radius: 38px;
-  padding: 12px;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.014)), var(--surface);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.38);
+  border-radius: 36px;
+  padding: 8px;
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.01)), #060807;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 
+    0 20px 50px rgba(0, 0, 0, 0.35), 
+    0 0 0 4px #151816;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
 }
 
-.screen-tile:nth-child(2), .screen-tile:nth-child(4) {
-  transform: translateY(42px);
+.screen-tile:before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 7px;
+  width: 60px;
+  height: 14px;
+  transform: translateX(-50%);
+  border-radius: 999px;
+  background: #020403;
+  z-index: 2;
 }
 
 .screen-tile img {
   width: 100%;
   aspect-ratio: 946/2048;
   object-fit: cover;
-  border-radius: 29px;
-  border: 1px solid rgba(124, 248, 207, 0.12);
+  border-radius: 28px;
+  border: 1px solid rgba(124, 248, 207, 0.08);
+}
+
+.screen-tile:nth-child(2), .screen-tile:nth-child(4) {
+  transform: translateY(42px);
+}
+
+/* Tilt and hover effects for the gallery mockups */
+.screen-tile:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 
+    0 30px 60px rgba(0, 0, 0, 0.5), 
+    0 0 0 4px #1c1f1d,
+    0 0 25px rgba(22, 207, 160, 0.15);
+  z-index: 10;
+}
+
+.screen-tile:nth-child(2):hover, .screen-tile:nth-child(4):hover {
+  transform: translateY(34px) scale(1.02);
 }
 
 .screen-caption {
   position: absolute;
-  left: 23px;
-  right: 23px;
-  bottom: 23px;
-  padding: 15px;
-  border-radius: 22px;
+  left: 18px;
+  right: 18px;
+  bottom: 18px;
+  padding: 12px;
+  border-radius: 18px;
   background: rgba(2, 4, 3, 0.72);
   border: 1px solid var(--line);
   backdrop-filter: blur(18px);
+  z-index: 5;
 }
 
 .screen-caption h3 {
-  font-size: 22px;
-  margin-bottom: 5px;
+  font-size: 18px;
+  margin-bottom: 4px;
+  font-weight: 750;
+  letter-spacing: -0.03em;
 }
 
 .screen-caption p {
   color: var(--soft);
-  font-size: 13px;
-  line-height: 1.35;
+  font-size: 12px;
+  line-height: 1.3;
 }
 
 /* Why Sway */
@@ -923,15 +1009,18 @@ details p {
   .screens {
     display: flex;
     overflow-x: auto;
-    padding: 0 4px 18px;
+    padding: 10px 4px 24px;
     scroll-snap-type: x mandatory;
   }
   .screen-tile {
-    min-width: 286px;
+    min-width: 260px;
     scroll-snap-align: center;
   }
   .screen-tile:nth-child(2), .screen-tile:nth-child(4) {
     transform: none;
+  }
+  .screen-tile:nth-child(2):hover, .screen-tile:nth-child(4):hover {
+    transform: translateY(-8px) scale(1.02);
   }
 }
 
@@ -1031,7 +1120,7 @@ details p {
     margin-bottom: 110px;
   }
   .screen-tile {
-    min-width: 276px;
+    min-width: 250px;
   }
   .cta {
     padding-bottom: 84px;
