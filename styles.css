@@ -196,8 +196,7 @@ button, input {
 
 .phone img, .side-phone img, .editorial-phone img, .screen-tile img {
   width: 100%;
-  aspect-ratio: 946/2048;
-  object-fit: cover;
+  height: auto;
   display: block;
 }
 
