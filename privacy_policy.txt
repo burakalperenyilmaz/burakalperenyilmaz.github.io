@@ -1,0 +1,407 @@
+PRIVACY POLICY
+
+Last Updated: July 7, 2026
+Effective Date: July 7, 2026
+
+Sway ("we," "us," "our," or the "App") is a digital wellbeing and intentional phone use application developed by Burak Alperen Yilmaz ("Developer"). This Privacy Policy describes how we collect, use, disclose, and protect your information when you use the Sway mobile application (available on iOS and Android) and any related services (collectively, the "Service").
+
+By downloading, installing, or using Sway, you agree to the collection and use of information in accordance with this Privacy Policy. If you do not agree with this Privacy Policy, please do not use the Service.
+
+------------------------------------------------------------------------
+
+1. INFORMATION WE COLLECT
+
+We collect information in three categories: information you provide directly, information collected automatically, and information processed exclusively on your device.
+
+1.1 Information You Provide Directly
+
+(a) Account Information
+When you create an account or link your authentication, we may collect:
+- Authentication credentials via Apple Sign-In or Google Sign-In (we receive only the information these providers share, such as your name and email address; we do not receive or store your Apple or Google password).
+- Display name (optional, set by you within the App).
+- You may initially use the App with an anonymous account. If you choose to link your account with Apple or Google, the information above is collected at that point.
+
+(b) Onboarding and Preferences
+During onboarding, you may provide:
+- Your personal goals related to digital wellbeing and focus.
+- Challenge areas you wish to address (e.g., phone overuse, distraction, procrastination).
+- Experience level with focus and productivity tools.
+- Preferred focus areas and time preferences.
+- Daily session goals.
+- Estimated daily screen time band (self-reported).
+
+(c) User-Generated Content
+- Routine and commitment names and configurations.
+- Focus session labels, reflections, mood, energy level, and focus quality ratings.
+- Pomodoro protocol settings (focus/break durations).
+- Sleep automation schedules and rules.
+
+(d) Support Communications
+If you contact us for support, we may collect your email address and the content of your communications.
+
+1.2 Information Collected Automatically
+
+(a) Analytics Data
+We use Firebase Analytics to collect:
+- App usage patterns (e.g., screens visited, features used, session frequency).
+- Anonymous user identifiers.
+- App version and platform information.
+
+All analytics parameters are sanitized by our Analytics Param Guard system before transmission. This system:
+- Strips personally identifiable information (PII).
+- Truncates strings exceeding 120 characters.
+- Blocks sensitive fields including: package names, app names, bundle identifiers, calendar titles, event titles, family activity tokens, selection tokens, and blocked app identifiers.
+
+(b) Device Information
+We collect basic device information for debugging and compatibility:
+- Device model and manufacturer.
+- Operating system name and version.
+- App version and build number.
+- Timezone information.
+
+(c) Network Status
+We detect network connectivity status (online/offline) to manage cloud sync features. We do not log or store your IP address, network identifiers, or browsing activity.
+
+(d) Subscription and Purchase Data
+If you subscribe to Sway Pro, RevenueCat (our subscription management partner) processes your purchase. We receive:
+- Subscription status (active, expired, trial).
+- Entitlement information (features you have access to).
+- Transaction identifiers.
+
+We do NOT receive or store your payment card details, billing address, or financial account information. All payment processing is handled exclusively by Apple App Store or Google Play Store through RevenueCat.
+
+1.3 Information Processed Locally on Your Device
+
+The following data is collected and processed EXCLUSIVELY on your device. This data is NEVER transmitted to our servers, cloud services, third-party analytics, or AI systems. Our codebase enforces this through a strict architectural privacy boundary with automated source-level guards.
+
+(a) Screen Time and App Usage Data (iOS)
+- If you grant Screen Time / Family Controls permission (iOS), the App accesses your device usage data to provide app-blocking and screen time management features.
+- All raw screen time data, specific app names, app categories, opaque Family Activity selection tokens, and per-app usage statistics remain on your device at all times.
+- The DeviceActivityReport extension operates entirely within Apple's sandboxed environment. No per-app data, app tokens, or selection tokens ever reach our Dart (Flutter) application code, cloud services, analytics pipelines, or AI prompts.
+- On-device usage insights are computed locally and represented only as normalized, identity-free behavior metrics (e.g., closed-set pattern signals like "ATTENTION_FRAGMENTATION" with intensity levels).
+
+(b) App Blocking Data (Android)
+- If you grant Usage Access and Accessibility Service permissions (Android), the App accesses usage statistics and provides app-blocking overlay functionality.
+- All raw usage data and blocked app identifiers remain on your device at all times.
+
+(c) Calendar Data
+- If you grant calendar access, the App reads and writes to your calendar for calendar-sync and calendar-aware scheduling features.
+- Personal calendar event titles, descriptions, attendees, locations, and other event details are processed locally and are NEVER transmitted off your device or to AI systems.
+
+(d) Local Preferences and History
+- Focus session history (start/end times, durations, completion status, pause counts, abandon reasons).
+- Streak data and completion metrics.
+- Routine configurations and schedules.
+- Commitment records and app blocking preferences (blocked app selections, daily limits, usage limits).
+- Sleep automation schedules, rules, and privacy entries.
+- Timer and audio preferences, haptic settings.
+- Milestone and badge achievements.
+- All local data stored using Hive (local database) and SharedPreferences.
+
+------------------------------------------------------------------------
+
+2. HOW WE USE YOUR INFORMATION
+
+2.1 Providing and Improving the Service
+- Delivering core features: focus sessions (pomodoro timer), routines, commitments, screen time management, app blocking, sleep automation, calendar sync, widgets, and live activities.
+- Personalizing your experience based on your stated goals and preferences.
+- Analyzing aggregated, anonymized usage patterns to improve app features and performance.
+- Maintaining leaderboard functionality (using only your display name and total focus minutes).
+
+2.2 AI-Powered Coach Features
+Sway includes an optional AI Coach feature powered by Google Gemini (via Google Cloud Functions). When you use AI features:
+
+(a) What We Send to AI (via Cloud Functions)
+- ONLY anonymized and aggregated data: focus session counts, average durations, completion rates, aggregated routine patterns.
+- Closed-set behavior pattern signals computed on-device (e.g., pattern type, kind, intensity, trend, confidence level). These are abstract behavioral categories, NOT raw usage data.
+- Your stated goals and preferences (from onboarding).
+- Onboarding profile (goal, intent, friction areas, rhythm preferences, self-reported screen time band).
+- Subscription tier (for feature eligibility).
+- A summarized memory of up to 5 previous AI interactions (diagnosis and advice summaries only; no raw data).
+- Your locale (for language-appropriate responses).
+- Optional: adaptive limit summaries, calendar context (time-of-day, not event content).
+
+(b) What We NEVER Send to AI
+- Raw screen time data, specific app names, app categories, or usage counts.
+- Family Controls selections, DeviceActivity data, or blocked app identifiers.
+- Personal calendar event titles, descriptions, attendees, or details.
+- Email addresses, phone numbers, addresses, or other PII.
+- Device usage statistics or browsing history.
+- Any Level 1 (device-only) classified data.
+
+(c) AI Data Controls
+- AI cloud features require your explicit consent (configurable toggle).
+- You can disable AI features at any time in Settings.
+- AI-generated content is stored in your Firestore user document and is deleted when you delete your account.
+- Daily AI usage is capped by a per-user budget system (separate limits for free and Pro users).
+- AI analysis requires minimum qualifying sessions before producing session-based insights (3 sessions for daily insights, 5 sessions for weekly digest).
+- AI outputs follow strict content guidelines: no false medical or scientific claims, no specific time-saving promises, no unsupported behavioral assertions, maximum content length constraints.
+
+2.3 Cloud Backup and Sync
+If you are a Sway Pro subscriber and have opted in:
+- Your user data (focus sessions, commitments/routines metadata, settings, protocols, milestones) may be backed up to Google Cloud Firestore.
+- Cloud backup requires a non-anonymous linked account (Apple or Google Sign-In) and explicit backup consent.
+- Backed-up commitment data uses a privacy-safe format (toCloudSyncJson) that excludes blocked app selections, shield configurations, and usage limit enforcement data.
+- Data is encrypted in transit via HTTPS/TLS.
+- Backup is chunked (max 700KB per chunk, max 60 chunks) for reliability.
+- Auto-backup triggers after every 15 sessions.
+- You can enable or disable cloud backup at any time in Settings.
+
+2.4 Notifications
+- Sway uses local notifications (flutter_local_notifications) for all reminder functionality. We do NOT use Firebase Cloud Messaging (FCM) or server-sent push notifications.
+- Notification types include: daily focus reminders, sleep automation reminders (bedtime/wake-up), routine reminders, timer completion alerts, usage limit alerts, coach daily push, and scheduled session notifications.
+- All notification scheduling is handled on-device.
+- You can configure notification preferences within the App or disable notifications through your device settings.
+
+2.5 Leaderboard
+- If enabled, your display name and total focus minutes are stored in a read-only leaderboard collection.
+- Leaderboard data is visible to other authenticated users.
+- You can enable or disable leaderboard participation in Settings.
+
+2.6 Referral System
+- If you use the referral feature, the system tracks referral relationships (inviter/invitee) server-side.
+- Referral data is read-only for clients; management is handled by server-side logic.
+- No additional personal data beyond your anonymous user ID is used for referrals.
+
+------------------------------------------------------------------------
+
+3. DATA CLASSIFICATION AND PRIVACY ARCHITECTURE
+
+We operate a strict three-tier data classification system, enforced programmatically with source-level architecture tests:
+
+Level 1 - Device Only (NEVER leaves your device):
+- Raw screen time / app usage data
+- Specific app names, bundle identifiers, and categories
+- Opaque Family Activity selection tokens
+- DeviceActivity monitoring data
+- Calendar event titles, descriptions, and details
+- Blocked app identifiers and shield configurations
+- Daily usage limits and opens limits
+- Sleep automation privacy entries
+- Normalized local behavior metrics (raw form)
+
+Level 2 - Aggregated / Pattern Signals (processed on-device, only abstract signals may reach cloud):
+- Closed-set behavior pattern signals (pattern type, kind, intensity, trend, confidence)
+- Aggregated session statistics (counts, averages, rates)
+- Anonymized routine patterns
+
+Level 3 - Cloud Allowed (may be stored/processed in cloud with your consent):
+- User-stated goals, preferences, and onboarding profile
+- Focus session records (times, durations, reflections)
+- Commitment/routine metadata (names, schedules; NOT blocking configs)
+- Display name
+- AI analysis results and coaching plans
+- Subscription and entitlement status
+- Milestone and badge data
+
+------------------------------------------------------------------------
+
+4. THIRD-PARTY SERVICES
+
+We use the following third-party services. Each operates under its own privacy policy:
+
+4.1 Firebase (Google LLC)
+- Firebase Authentication: User sign-in and account management (anonymous, Apple, Google).
+- Cloud Firestore: Cloud database for user data (when cloud backup is enabled).
+- Firebase Analytics: Anonymized app usage analytics.
+- Cloud Functions: Server-side processing for AI Coach features.
+Privacy Policy: https://firebase.google.com/support/privacy
+
+4.2 RevenueCat, Inc.
+- Subscription management, purchase verification, receipt validation, and entitlement management.
+- Receives: anonymous app user ID, purchase receipts, subscription status.
+- Does NOT receive: your personal information, usage data, screen time data, or any Level 1 classified data.
+Privacy Policy: https://www.revenuecat.com/privacy
+
+4.3 Apple Sign-In (Apple Inc.)
+- Authentication only; we receive only the information Apple shares per your Apple ID settings (name, email, or private relay email address).
+Privacy Policy: https://www.apple.com/legal/privacy/
+
+4.4 Google Sign-In (Google LLC)
+- Authentication only; we receive only your basic profile information (name, email address).
+Privacy Policy: https://policies.google.com/privacy
+
+4.5 Google Cloud / Gemini AI (Google LLC)
+- Processes anonymized, aggregated user data and abstract behavior signals for AI Coach features via Cloud Functions.
+- Subject to Google Cloud's data processing terms.
+- No raw device data, screen time data, calendar data, or PII is transmitted.
+Privacy Policy: https://cloud.google.com/terms/cloud-privacy-notice
+
+We do NOT use any advertising SDKs, crash reporting SDKs (no Crashlytics, no Sentry), or cross-app tracking tools. Sway contains no advertisements.
+
+------------------------------------------------------------------------
+
+5. DATA STORAGE AND SECURITY
+
+5.1 Local Storage
+- Local data is stored using Hive (local database) and SharedPreferences on your device.
+- Screen time data, calendar data, and app blocking configurations never leave your device's local storage.
+- The privacy boundary between local-only modules and cloud/analytics modules is enforced through automated architecture tests at the source code level.
+
+5.2 Cloud Storage
+- Cloud data (when enabled) is stored in Google Cloud Firestore, hosted in Google Cloud data centers.
+- All data in transit is encrypted using HTTPS/TLS.
+- Firestore security rules enforce strict user isolation: each user can only read and write their own documents.
+- Server-managed fields (referral counts, AI rate limits, social shares) are protected from client-side tampering.
+- Write operations are rate-limited to prevent abuse.
+- Backup data is chunked and deduplicated for integrity.
+
+5.3 Security Measures
+- We do not store passwords; authentication is delegated to Apple and Google.
+- Analytics data is sanitized to remove PII and sensitive identifiers before transmission.
+- AI prompts are constructed with privacy-safe data only, enforced programmatically through the CloudPrivacyPolicy class.
+- The local device privacy module is architecturally isolated and prohibited from importing Firebase, analytics, cloud, or AI service modules.
+- We use cryptographic hashing (crypto package) for data integrity where applicable.
+
+------------------------------------------------------------------------
+
+6. DATA RETENTION
+
+6.1 Local Data
+- Local data is retained on your device until you delete the App, reset your data within the App, or clear app data through your device settings.
+- You can reset all local data at any time using the "Reset Data" feature in Settings. This operation:
+  - Clears: all focus sessions, all commitments, all habits, all cached AI insights, all local privacy data (blocked app configs, sleep automation entries), all derived state.
+  - Preserves: theme, language, onboarding completion status, Pro subscription status, cloud/calendar/DND preferences, notification settings, AI consent toggles, display name, daily goals, home layout preferences, sleep mode preferences, timer/audio settings.
+
+6.2 Cloud Data
+- Cloud-backed data is retained as long as your account exists and cloud backup is enabled.
+- If you delete your account, all associated cloud data (Firestore documents, backup chunks, AI analysis records) is permanently deleted.
+- AI analysis results stored in Firestore are retained until you delete your account or the data is overwritten by new AI analyses.
+
+6.3 Analytics Data
+- Firebase Analytics data is retained according to Google's standard retention policies (typically 14 months for user-level data).
+
+------------------------------------------------------------------------
+
+7. YOUR RIGHTS AND CHOICES
+
+7.1 Access and Portability
+- You can view all your data within the App at any time (focus session history, routines, commitments, insights, streak data).
+- You can export your focus session data as files using the in-app export feature.
+
+7.2 Deletion
+- You can delete all local data using the "Reset Data" feature in Settings.
+- You can request complete account deletion, which removes all cloud-stored data associated with your account from Firestore and deletes your Firebase Authentication record.
+- To request account deletion, use the in-app account management feature or contact us at the email address listed in Section 14.
+
+7.3 Consent Management
+- AI Cloud Features: You can enable or disable AI cloud processing at any time in Settings (separate consent toggle).
+- Cloud Backup: You can enable or disable cloud backup at any time in Settings (requires explicit consent).
+- Leaderboard: You can enable or disable leaderboard participation in Settings.
+- Notifications: You can manage notification preferences in the App or disable them via device system settings.
+- Permissions: You can revoke Screen Time/Family Controls (iOS), Usage Access (Android), Accessibility (Android), Calendar, DND, and Notification permissions at any time through your device's system settings. The App continues to function with reduced features when permissions are revoked.
+
+7.4 Opt-Out of Analytics
+- You can limit analytics collection by disabling usage data sharing in your device settings or by contacting us to request data deletion.
+
+------------------------------------------------------------------------
+
+8. INTERNATIONAL DATA TRANSFERS
+
+Your information may be transferred to and processed in countries other than your country of residence, including the United States, where Google Cloud infrastructure is located. We rely on Google Cloud's data processing agreements and, where applicable, Standard Contractual Clauses (SCCs) or other approved transfer mechanisms for lawful international data transfers.
+
+------------------------------------------------------------------------
+
+9. EUROPEAN ECONOMIC AREA (EEA), UNITED KINGDOM, AND SWITZERLAND RESIDENTS
+
+If you are located in the EEA, UK, or Switzerland, you have additional rights under the General Data Protection Regulation (GDPR) or equivalent legislation:
+
+9.1 Legal Bases for Processing
+- Contract Performance: Processing necessary to provide the Service you requested (account management, core features, cloud backup).
+- Legitimate Interest: Analytics to improve the Service, provided our interests do not override your fundamental rights and freedoms.
+- Consent: AI cloud features, optional cloud backup, leaderboard participation. You may withdraw consent at any time without affecting the lawfulness of prior processing.
+
+9.2 Your GDPR Rights
+- Right of Access: Request a copy of personal data we hold about you.
+- Right to Rectification: Request correction of inaccurate personal data.
+- Right to Erasure ("Right to be Forgotten"): Request deletion of your personal data.
+- Right to Restriction of Processing: Request that we limit how we use your data.
+- Right to Data Portability: Request your data in a structured, commonly used, machine-readable format.
+- Right to Object: Object to processing based on legitimate interest.
+- Right to Withdraw Consent: Withdraw consent at any time.
+- Right to Lodge a Complaint: File a complaint with your local supervisory authority (Data Protection Authority).
+
+To exercise any of these rights, contact us using the information in Section 14. We will respond within 30 days.
+
+------------------------------------------------------------------------
+
+10. CALIFORNIA RESIDENTS (CCPA/CPRA)
+
+If you are a California resident, you have additional rights under the California Consumer Privacy Act (CCPA) as amended by the California Privacy Rights Act (CPRA):
+
+10.1 Your California Rights
+- Right to Know: Request disclosure of the categories and specific pieces of personal information we have collected about you in the past 12 months.
+- Right to Delete: Request deletion of personal information we have collected.
+- Right to Correct: Request correction of inaccurate personal information.
+- Right to Opt-Out of Sale/Sharing: We do NOT sell or share your personal information for cross-context behavioral advertising.
+- Right to Non-Discrimination: We will not discriminate against you for exercising your privacy rights.
+
+10.2 Categories of Information Collected
+- Identifiers: Name, email (from authentication providers), anonymous user IDs.
+- Internet or Electronic Network Activity: App usage analytics (anonymized), feature interaction data.
+- Inferences: AI-generated insights based on anonymized, aggregated session data and abstract behavior signals.
+
+10.3 No Sale of Personal Information
+We do NOT sell, rent, lease, or trade your personal information to any third party for monetary or other valuable consideration. We do NOT share your personal information for cross-context behavioral advertising purposes.
+
+------------------------------------------------------------------------
+
+11. CHILDREN'S PRIVACY
+
+Sway is not directed at children under the age of 13 (or the applicable minimum age in your jurisdiction, such as 16 in certain EEA member states). We do not knowingly collect personal information from children under 13.
+
+If we become aware that we have inadvertently collected personal information from a child under 13 without verifiable parental consent, we will take steps to delete such information promptly.
+
+If you are a parent or guardian and believe your child has provided us with personal information, please contact us using the information in Section 14.
+
+------------------------------------------------------------------------
+
+12. APPLE APP TRACKING TRANSPARENCY
+
+Sway does NOT track you across other companies' apps and websites. We do not participate in tracking as defined by Apple's App Tracking Transparency (ATT) framework. Sway does not use the IDFA (Identifier for Advertisers), does not use any advertising SDKs, and does not engage in cross-app or cross-site tracking.
+
+------------------------------------------------------------------------
+
+13. CHANGES TO THIS PRIVACY POLICY
+
+We may update this Privacy Policy from time to time to reflect changes in our practices, technology, legal requirements, or for other operational reasons. When we make material changes, we will:
+- Update the "Last Updated" date at the top of this document.
+- Notify you through an in-app notification or other appropriate means prior to the change becoming effective.
+- Post the updated Privacy Policy at the URL referenced within the App.
+
+Your continued use of the Service after the effective date of any updated Privacy Policy constitutes your acceptance of the changes. We encourage you to review this Privacy Policy periodically.
+
+------------------------------------------------------------------------
+
+14. CONTACT US
+
+If you have any questions, concerns, or requests regarding this Privacy Policy or our data practices, please contact us:
+
+Developer: Burak Alperen Yilmaz
+Email: support@swayfocus.com
+Website: https://swayfocus.com
+
+For privacy-specific requests (data access, deletion, correction, or exercising your rights under GDPR, CCPA, or other applicable laws), please include "Privacy Request" in your email subject line along with sufficient information to verify your identity. We will respond to verified requests within 30 days (or sooner as required by applicable law).
+
+------------------------------------------------------------------------
+
+15. APPLE AND GOOGLE PLATFORM-SPECIFIC DISCLOSURES
+
+15.1 Apple Screen Time API (Family Controls / DeviceActivity Framework)
+In compliance with Apple's guidelines for the Family Controls and DeviceActivity frameworks:
+- Screen Time data accessed through Apple's Family Controls framework is used solely to provide app-blocking and digital wellbeing features that the user has explicitly configured.
+- All Screen Time data processing occurs within Apple's sandboxed DeviceActivity extension (FocubitDeviceActivityReport).
+- No per-app usage data, app tokens, selection tokens, or app identifiers are accessible to or transmitted by our Flutter application code, cloud services, analytics, or AI systems.
+- The local device privacy module is architecturally isolated from all network-capable code paths, verified by automated source-level tests.
+
+15.2 Google Play Data Safety
+In compliance with Google Play's Data Safety requirements:
+- Data collected: Name, email (from authentication providers only), app interactions (anonymized analytics).
+- Data shared: None. We do not share personal data with third parties for their own independent purposes.
+- Data NOT collected: Location, browsing history, contacts, SMS, call logs, photos, videos, files, health data (raw), financial information, advertising identifiers.
+- Security: Data encrypted in transit (HTTPS/TLS). Account deletion available via in-app feature.
+- No advertising. No cross-app tracking. No data sales.
+
+------------------------------------------------------------------------
+
+END OF PRIVACY POLICY
